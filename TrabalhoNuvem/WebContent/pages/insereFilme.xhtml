@@ -1,0 +1,101 @@
+<ui:composition template="/WEB-INF/templates/geral.xhtml"
+		xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+	 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	 	xmlns:f="http://java.sun.com/jsf/core"
+	 	xmlns:p="http://primefaces.org/ui">
+
+
+	<ui:define name="conteudo">
+<ui:insert name="cabecalho">
+		<ui:include src="/WEB-INF/templates/cabecalho3.xhtml" />
+</ui:insert>
+	<div class="">
+<h:head>
+	 <h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+</h:head>
+	
+	
+	<div class="container">
+	<h2>Insere Filme</h2>
+	<legend></legend>
+	<p:messages showDetail="true" closable="true"/>
+	
+	<h:form>
+
+		<h:panelGrid columns="2">
+		<h5>
+			<h:outputLabel for="titulo" value="Titulo do filme" />
+		</h5> 
+			<h:inputText class="input-xxlarge" id="titulo" label="titulo" placeholder="Type something…"
+			required="true" value="#{filmeBean.filme.titulo}" />
+			
+		<h5>	
+			<h:outputLabel for="genero" value="Gênero" />
+		</h5>
+			<h:inputText class="input-xxlarge" id="genero" label="genero" placeholder="Type something…"
+			required="true" value="#{filmeBean.filme.genero}" />
+			
+		<h5>	
+			<h:outputLabel for="data" value="Data de Estreia" />
+		</h5>
+			<h:inputText class="input-xxlarge" id="data" label="data" placeholder="Type something…"
+			required="true" value="#{filmeBean.filme.dataEstreia}" />
+		
+		<h5>	
+			<h:outputLabel for="direcao" value="Direção" />
+		</h5>
+			<h:inputText class="input-xxlarge" id="direcao" label="direcao" placeholder="Type something…"
+			required="true" value="#{filmeBean.filme.direcao}" />
+		
+		<h5>	
+			<h:outputLabel for="ano" value="Ano Lançamento" />
+		</h5>
+			<h:inputText class="input-xxlarge" id="ano" label="ano" placeholder="Type something…"
+			required="true" value="#{filmeBean.filme.anoLancamento}" />
+		
+		<h5>	
+			<h:outputLabel for="duracao" value="Duração" />
+		</h5>
+			<h:inputText class="input-xxlarge" id="duracao" label="duracao" placeholder="Type something…"
+			required="true" value="#{filmeBean.filme.duracao}" />
+		
+		<h5>	
+			<h:outputLabel for="media" value="Média" />
+		</h5>
+			<h:inputText class="input-xxlarge" id="media" label="media" placeholder="Type something…"
+			required="true" value="#{filmeBean.filme.media}" />
+			
+		<h5>	
+			<h:outputLabel for="sinopse" value="Sinopse" />
+		</h5>
+			<h:inputTextarea rows="10" class="input-xxlarge" id="sinopse" 
+			label="sinopse" required="true" value="#{filmeBean.filme.sinopse}" />
+		
+		<h5>	
+			<h:outputLabel for="observacao" value="Observação" />
+		</h5>
+			<h:inputTextarea rows="10" class="input-xxlarge" id="observacao" 
+			label="observacao" required="false" value="#{filmeBean.filme.observacao}" />
+		
+			
+		</h:panelGrid>
+		<div class="">
+			<h:commandButton id="salvar" class="btn btn-primary" 
+			 value="Salvar Tarefa" action="#{filmeBean.InsereFilme}" />
+		</div>
+
+		</h:form>
+		
+
+		
+	</div>
+	
+
+<ui:insert name="footer">
+		<ui:include src="/WEB-INF/templates/footer.xhtml" />
+</ui:insert>
+</div>
+	</ui:define>
+	
+</ui:composition>

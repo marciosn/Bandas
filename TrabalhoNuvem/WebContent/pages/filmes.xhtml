@@ -1,0 +1,49 @@
+<ui:composition template="/WEB-INF/templates/geral.xhtml"
+		xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+	 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	 	xmlns:f="http://java.sun.com/jsf/core"
+	 	xmlns:p="http://primefaces.org/ui">
+
+
+	<ui:define name="conteudo">
+<ui:insert name="cabecalho">
+		<ui:include src="/WEB-INF/templates/cabecalho3.xhtml" />
+</ui:insert>
+
+      <div id="content">
+        <div class="container" id="about">
+          <h2 class="title-divider">
+            <span>Timelines</span> 
+            <small>5 New Timeline Options</small>
+          </h2>
+          <!-- Timeline 1: default -->
+          <h3>
+            Timeline 1: Default
+          </h3>
+         <h:form>
+				<h:commandButton value="Download" action="#{containerBean.ListaContainer}" class="btn btn-primary"/>
+		</h:form>
+
+        </div>
+      </div>
+      
+      <!-- ======== @Region: #content-below ======== -->
+      <div id="content-below" class="wrapper">
+        <div class="container">
+          <div class="row">
+            <div class="upsell">
+              <small class="muted">99.9% Uptime <span class="spacer">//</span> Free upgrade assistence <span class="spacer">//</span> 24/7 Support <span class="spacer">//</span> Plans from $19.99/month <span class="spacer">//</span> </small>
+              <a href="pricing.htm" class="btn btn-primary">Start your Free Trial Today! <i class="fa fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<ui:insert name="footer">
+		<ui:include src="/WEB-INF/templates/footer.xhtml" />
+</ui:insert>
+
+	</ui:define>
+	
+</ui:composition>
