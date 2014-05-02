@@ -11,7 +11,8 @@
 		<ui:include src="/WEB-INF/templates/cabecalho3.xhtml" />
 </ui:insert>
 <h:head>
-	 <h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+	 <!-- <h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+	 <h:outputStylesheet library="css" name="gallery.css"></h:outputStylesheet> -->
 </h:head>
 	
 	
@@ -24,7 +25,7 @@
 			
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="ID ÚNICO" class="label" />
+					<h:outputText value="ID ÚNICO" />
 				</f:facet>
 				<h5>
 				<h:outputText value="#{var.id}" />
@@ -33,7 +34,7 @@
 			 
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Título Filme" class="label"/>
+					<h:outputText value="Título Filme" />
 				</f:facet>
 				<h5>
 				<h:outputText value="#{var.titulo}"/>
@@ -42,7 +43,7 @@
 			
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Gênero Filme" class="label"/>
+					<h:outputText value="Gênero Filme" />
 				</f:facet>
 				<h5>
 				<h:outputText value="#{var.genero}"/>
@@ -51,7 +52,7 @@
 			
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Ano Lançamento" class="label"/>
+					<h:outputText value="Ano Lançamento" />
 				</f:facet>
 				<h5>
 				<h:outputText value="#{var.anoLancamento}"/>
@@ -60,7 +61,7 @@
 			
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Nota Média" class="label"/>
+					<h:outputText value="Nota Média"/>
 				</f:facet>
 				<h5>
 				<h:outputText value="#{var.media}"/>
@@ -69,7 +70,7 @@
 			
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Sinopse" class="label"/>
+					<h:outputText value="Sinopse"/>
 				</f:facet>
 				<h5>
 				<h:outputText value="#{var.sinopse}"/>
@@ -78,7 +79,7 @@
 			
 			<h:column>
 				<f:facet name="header">
-					<h:outputText value="Obervações" class="label"/>
+					<h:outputText value="Obervações"/>
 				</f:facet>
 				<h5>
 				<h:outputText value="#{var.observacao}"/>

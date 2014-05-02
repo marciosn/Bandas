@@ -22,6 +22,7 @@ public class Filme implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	private String capa;
 	private String titulo;
 	private String anoLancamento;
 	private String genero;
@@ -35,7 +36,12 @@ public class Filme implements Serializable{
 	public Filme(){
 		this.id = ultimoID++;
 	}
-
+	public String getCapa() {
+		return capa;
+	}
+	public void setCapa(String capa) {
+		this.capa = capa;
+	}
 	public int getId() {
 		return id;
 	}

@@ -12,7 +12,7 @@
 </ui:insert>
 	<div class="">
 <h:head>
-	 <h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet>
+	<!--  <h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet> -->
 </h:head>
 	
 	
@@ -27,37 +27,37 @@
 		<h5>
 			<h:outputLabel for="titulo" value="Titulo do filme" />
 		</h5> 
-			<h:inputText class="input-xxlarge" id="titulo" label="titulo" placeholder="Type something…"
+			<h:inputText class="form-control" id="titulo" label="titulo" placeholder="Type something…"
 			required="true" value="#{serieBean.serie.titulo}" />
 			
 		<h5>	
 			<h:outputLabel for="genero" value="Gênero" />
 		</h5>
-			<h:inputText class="input-xxlarge" id="genero" label="genero" placeholder="Type something…"
+			<h:inputText class="form-control" id="genero" label="genero" placeholder="Type something…"
 			required="true" value="#{serieBean.serie.genero}" />
 		
 		<h5>	
 			<h:outputLabel for="ano" value="Ano Lançamento" />
 		</h5>
-			<h:inputText class="input-xxlarge" id="ano" label="ano" placeholder="Type something…"
+			<h:inputText class="form-control" id="ano" label="ano" placeholder="Type something…"
 			required="true" value="#{serieBean.serie.anoLancamento}" />
 		
 		<h5>	
 			<h:outputLabel for="media" value="Média" />
 		</h5>
-			<h:inputText class="input-xxlarge" id="media" label="media" placeholder="Type something…"
+			<h:inputText class="form-control" id="media" label="media" placeholder="Type something…"
 			required="true" value="#{serieBean.serie.media}" />
 			
 		<h5>	
 			<h:outputLabel for="sinopse" value="Sinopse" />
 		</h5>
-			<h:inputTextarea rows="10" class="input-xxlarge" id="sinopse" 
+			<h:inputTextarea rows="10" class="form-control" id="sinopse" 
 			label="sinopse" required="true" value="#{serieBean.serie.sinopse}" />
 		
 		<h5>	
 			<h:outputLabel for="observacao" value="Observação" />
 		</h5>
-			<h:inputTextarea rows="10" class="input-xxlarge" id="observacao" 
+			<h:inputTextarea rows="10" class="form-control" id="observacao" 
 			label="observacao" required="false" value="#{serieBean.serie.observacao}" />
 		
 			

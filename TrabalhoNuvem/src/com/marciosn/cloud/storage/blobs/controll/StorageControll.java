@@ -6,8 +6,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.security.InvalidKeyException;
+import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -57,7 +59,10 @@ public class StorageControll {
 	private StreamedContent file;  
 	private String nomeArquivo;
 	private String uri;
-    public static final String storageConnectionString = 
+	private String capa;
+	private String uriCapa;
+
+	public static final String storageConnectionString = 
             "DefaultEndpointsProtocol=http;" + 
                "AccountName=portalvhdsjtq29274knmm2;" + 
                "AccountKey=ywi91c425cNVBnpFuQs0ieA1UzkUIF/nF5KZ0BpUc9fXh0xBs36IaO8w039MRvtRLineI1iMgcKGlXsOq51vKg=="; 
@@ -100,10 +105,6 @@ public class StorageControll {
             File fileReference = new File ("C:\\myimages\\" + nomeArquivo);
             File file = new File(path);
             blob.upload(new FileInputStream(file), file.length());
-            //blob.upload(new FileInputStream(fileReference), fileReference.length());
-            
-            
-            //blob.upload(new FileInputStream(f), f.length());
             
             Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
     		flash.setKeepMessages(true);
@@ -339,6 +340,33 @@ public class StorageControll {
     	String name = (String) session.getAttribute("username");
     	System.out.println("IMPRIMINDO O NOME DA SESSÃOOOOOOOOOO "+name);
     }
+    public String pegaCapa() throws InvalidKeyException, URISyntaxException, StorageException{
+        CloudStorageAccount account;
+        CloudBlobClient serviceClient;
+        CloudBlobContainer container;
+        CloudBlockBlob blob;
+        
+        System.out.println("A capa recebida é :" + capa);
+        account = CloudStorageAccount.parse(storageConnectionString);
+        serviceClient = account.createCloudBlobClient();
+        container = serviceClient.getContainerReference("myimages");
+    	
+    	for (ListBlobItem blobItem : container.listBlobs()) {
+    	    String uri = blobItem.getUri().toString();
+    	    Blob blob2 = new Blob(uri);
+    	    repositorio.getListaUris().add(blob2);
+    	    URI u = blobItem.getUri();
+    	    if(uri.contains(capa)){
+    	    	System.out.println("ENCONTRADA IMAGEM " + "Nome Buscado " + capa + "Capa Encontrada " + uri);
+    	    	uriCapa = u.toString();
+    	    	return uriCapa;
+    	    }
+    	}
+    	String error = "http://i.imgbox.com/cFnnrfE5.jpg"; 
+    	uriCapa = error;
+    	return uriCapa;
+
+    }
       
     public StreamedContent getFile() {  
         return file;  
@@ -397,5 +425,18 @@ public class StorageControll {
 	public void setFile4(Part file4) {
 		this.file4 = file4;
 	}
-	
+    public String getCapa() {
+		return capa;
+	}
+	public void setCapa(String capa) {
+		this.capa = capa;
+	}
+
+
+	public String getUriCapa() {
+		return uriCapa;
+	}
+	public void setUriCapa(String uriCapa) {
+		this.uriCapa = uriCapa;
+	}
 }

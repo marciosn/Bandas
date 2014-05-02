@@ -23,6 +23,15 @@ public class Serie implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	private String capa;
+	public String getCapa() {
+		return capa;
+	}
+
+	public void setCapa(String capa) {
+		this.capa = capa;
+	}
+
 	private String titulo;
 	private String genero;
 	private String sinopse;

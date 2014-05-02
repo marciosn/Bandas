@@ -17,6 +17,7 @@ public class Repositorio {
 	List<Blob> listvideos = new ArrayList<Blob>();
 	List<Blob> listapdfs = new ArrayList<Blob>();
 	List<Blob> listageneral = new ArrayList<Blob>();
+	List<Blob> listaUris = new ArrayList<Blob>();
 	public List<Blob> getLista() {
 		return lista;
 	}
@@ -61,4 +62,14 @@ public class Repositorio {
 		lista.add(b);
 		return "lista";
 	}
+
+	public List<Blob> getListaUris() {
+		return listaUris;
+	}
+
+	public void setListaUris(List<Blob> listaUris) {
+		this.listaUris = listaUris;
+	}
+
+	
 }

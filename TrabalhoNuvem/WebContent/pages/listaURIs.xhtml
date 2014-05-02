@@ -1,0 +1,67 @@
+<ui:composition template="/WEB-INF/templates/geral.xhtml"
+		xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+	 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	 	xmlns:f="http://java.sun.com/jsf/core"
+	 	xmlns:p="http://primefaces.org/ui">
+
+
+	<ui:define name="conteudo">
+<ui:insert name="cabecalho">
+		<ui:include src="/WEB-INF/templates/cabecalho3.xhtml" />
+</ui:insert>
+<h:head>
+	<!--  <h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet> -->
+</h:head>
+	
+	
+	<div class="container">
+	<h2>Lista Filme</h2>
+	<legend></legend>
+	<p:messages showDetail="true" closable="true"/>
+	
+          <h:dataTable styleClass="table" value="#{repositorio.listaUris}" var="var">
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Selecionar" />
+				</f:facet>
+				<h:form>
+				<h:commandButton value="Delete" action="insereFilme" class="btn btn-primary btn-xs">
+				<f:setPropertyActionListener target="#{filmeBean.uri}" value="#{var.uri}"/>
+				</h:commandButton>
+				</h:form>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Uri" />
+				</f:facet>
+				<h5>
+				<h:outputText value="#{var.uri}" />
+				</h5>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Visualização" />
+				</f:facet>
+				
+				<h:graphicImage class="img-responsive" value="#{var.uri}" width="220" height="140" border="4"/>
+			</h:column>
+
+		</h:dataTable>
+		<h:form>
+                <h:commandButton value="Buscar" action="insereFilme" class="btn btn-primary"/>
+                
+         </h:form>
+		
+	</div>
+	
+
+	<ui:insert name="footer">
+		<ui:include src="/WEB-INF/templates/footer.xhtml" />
+	</ui:insert>
+	</ui:define>
+	
+</ui:composition>
