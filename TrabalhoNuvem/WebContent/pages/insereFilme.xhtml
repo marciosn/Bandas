@@ -75,29 +75,31 @@
 		<h5>	
 			<h:outputLabel for="sinopse" value="Sinopse" />
 		</h5>
-			<h:inputTextarea rows="10" class="form-control" id="sinopse" 
+			<h:inputTextarea rows="6" class="form-control" id="sinopse" 
 			label="sinopse" required="true" value="#{filmeBean.filme.sinopse}" />
 		
 		<h5>	
 			<h:outputLabel for="observacao" value="Observação" />
 		</h5>
-			<h:inputTextarea rows="10" class="form-control" id="observacao" 
+			<h:inputTextarea rows="6" class="form-control" id="observacao" 
 			label="observacao" required="false" value="#{filmeBean.filme.observacao}" />
 			
 		</h:panelGrid>
+		<p/>
 		<div class="">
 			<h:commandButton id="salvar" class="btn btn-primary" 
 			 value="Salvar Tarefa" action="#{filmeBean.InsereFilme}" />
 		</div>
 		</h:form>
-		
+		<p/>
 		
 		<h:form>
                <h:inputText class="form-control" id="capa" label="capa" value="#{storageControll.capa}" />
+               <p/>
                 <h:commandButton value="Buscar" action="#{filmeBean.pegaCapa}" class="btn btn-primary"/>
                  <h:commandButton value="URIS" action="listaURIs" class="btn btn-primary"/>
          </h:form>
-         
+         <p/>
          
          <div class="span3 pull-right">
          <h:outputText for="capauri" value="#{storageControll.uriCapa}" />
