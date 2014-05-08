@@ -51,6 +51,10 @@
                     Divirta-se
                   </h3>
                   <p>Aproveite as novidades sobre séries e filmes e fique por dentro dos novos lançamentos.</p>
+                  <p><h:outputLabel value="#{storageControll.name}" /></p>
+                   <h:form>
+						<h:commandButton value="Teste" action="#{storageControll.pegaSessao}" class="btn btn-primary"/>
+					</h:form>
                 </div>
               </div>
             </div>
@@ -65,7 +69,7 @@
                 <!--branding/logo-->
                 <h:link class="navbar-brand" outcome="/index">
                   <h1>
-                    <span>Cinema And</span>TV<span>.com</span>
+                    <span>TVeCinema</span>.com<span></span>
                   </h1>
                   </h:link>
                 <div class="slogan">Trabalho de Nuvem</div>
@@ -98,7 +102,10 @@
               <a class="navbar-btn" data-toggle="jpanel-menu" data-target=".navbar-collapse"> <span class="bar"></span> <span class="bar"></span> <span class="bar"></span> <span class="bar"></span> </a>
               
               <!--user menu-->
-              <div class="btn-group user-menu pull-right"> <a href="#signup-modal" class="btn btn-primary signup" data-toggle="modal">Sign Up</a> <a href="#login-modal" class="btn btn-primary dropdown-toggle login" data-toggle="modal">Login</a> </div>
+              <div class="btn-group user-menu pull-right">
+              <a href="#signup-modal" class="btn btn-primary signup" data-toggle="modal">Sign Up</a>
+              <a href="#login-modal" class="btn btn-primary dropdown-toggle login" data-toggle="modal">Login</a> </div>
+              <a href="login.xhtml" class="btn btn-primary dropdown-toggle login" data-toggle="modal">Logout</a>
               
               <!--everything within this div is collapsed on mobile-->
               <div class="navbar-collapse collapse">
@@ -170,7 +177,14 @@
                     <ul class="dropdown-menu" role="menu" aria-labelledby="more-drop">
                     <li><h:link value="Nova Serie" outcome="/pages/insereSerie" /></li>
                   	  <li><h:link value="Lista Serie" outcome="/pages/listaSerie" /></li>
+                  	  <li><h:link value="Página Séries" outcome="/pages/Series" /></li>
                     </ul>
+                  </li>
+                  <li>
+                  <a href="#" class="dropdown-toggle" id="more-drop">
+                  Bem Vindo
+                  <h:outputLabel value="#{storageControll.name}" />
+                  </a>
                   </li>
                 </ul>
               </div>
@@ -181,22 +195,22 @@
       </div>
       
       <!-- ======== @Region: #highlighted ======== -->
-<!--       <div id="highlighted">
-        Showshow - Slider Revolution see: plugins/slider-revolution/examples&sources for help invoke using data-toggle="slider-rev" options can be passed to the slider via HTML5 data- ie. data-startwidth="960"
+<div id="highlighted">
+
         <div class="slider-wrapper tp-banner-container" data-page-class="slider-revolution-full-width-behind slider-appstrap-theme">
           <div class="tp-banner" data-toggle="slider-rev" data-delay="9000" data-startwidth="1100" data-startheight="590" data-fullWidth="off">
             <ul>
-              SLIDE 1
+
               <li class="slide" data-transition="fade" data-slotamount="5" data-masterspeed="1800">
                 <img src="resources/img/white_wall_hash.png" alt="slidebg1" data-bgfit="normal" data-bgposition="left top" data-bgrepeat="repeat"/>
-                SLIDE 1 Content
+
                 <div class="slide-content">
-                  elements within .slide-content are pushed below navbar on "behind"
+
                   <div class="tp-caption sfb ltl" data-x="10" data-y="50" data-speed="400" data-start="800" data-easing="Back.easeOut" data-endspeed="500" data-endeasing="Back.easeIn" data-captionhidden="on">
                     <img src="resources/img/slide1.png" alt="Slide 1" />
                   </div>
                   <h2 class="tp-caption customin randomrotateout" data-x="700" data-y="120" data-speed="400" data-start="1200" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-easing="Back.easeOut" data-endspeed="400" data-endeasing="Back.easeIn">
-                    Trabalho de Computação em Nuvem
+
                   </h2>
                   <h4 class="tp-caption customin randomrotateout" data-x="700" data-y="160" data-speed="400" data-start="1400" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-easing="Back.easeOut" data-endspeed="400" data-endeasing="Back.easeIn">
                     By <a href="http://themelize.me">Márcio e Egila</a>
@@ -205,12 +219,12 @@
                   <a href="#" class="tp-caption customin randomrotateout btn btn-lg btn-primary" data-x="700" data-y="220" data-speed="400" data-start="1800" data-customin="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0;scaleY:0;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-easing="Back.easeOut" data-endspeed="400" data-endeasing="Back.easeIn">Buy Now</a> 
                 </div>
               </li>
-              SLIDE 2
+
               <li data-transition="curtain-1" data-slotamount="4" data-masterspeed="500" >
                 <img src="resources/img/lightpaperfibers.png" alt="slidebg1" data-bgfit="normal" data-bgposition="left top" data-bgrepeat="repeat"/>
-                SLIDE 2 Content
+
                 <div class="slide-content">
-                  elements within .slide-content are pushed below navbar on "behind"
+
                   <div class="tp-caption sfb ltr" data-x="left" data-y="bottom" data-speed="900" data-start="1200" data-easing="Elastic.easeOut" data-endspeed="200" data-endeasing="Power0.easeInOut">
                     <img src="resources/img/slide2-layer1.png" alt="Slide 2 layer 1" />
                   </div>
@@ -228,13 +242,13 @@
             </ul>
             <div class="tp-bannertimer tp-bottom"></div>
           </div>
-          end of tp-banner
+          
         </div>
-      </div> -->
+      </div>
       
-      <div id="highlighted">
+      <!-- <div id="highlighted">
         <div class="inner">
-          <!--Static Banner-->
+          Static Banner
           <section class="static-banner container">
             <div class="slide">
               <div class="col-md-7">
@@ -253,7 +267,7 @@
             </div>
           </section>
         </div>
-      </div>
+      </div> -->
       
       
       <!-- ======== @Region: #content ======== -->
@@ -262,43 +276,43 @@
           <!-- Services -->
           <div class="block features">
             <h2 class="title-divider">
-              <span>Filmes<span class="de-em">Movies</span></span>
+              <span>Movies<span class="de-em"></span></span>
               <small>Fique por dentro do que há de novo.</small>
             </h2>
             <div class="row">
               <div class="feature col-sm-6 col-md-3">
                 <a href="features.htm">
-                  <img src="resources/img/feature-1.png" alt="Feature 1" class="img-responsive" />
+                  <img src="resources/img/fast.jpg" alt="Feature 1" class="img-responsive" />
                 </a>
                 <h3 class="title">
-                  <a href="#">Mobile <span class="de-em">Friendly</span></a>
+                  <a href="#">Velozes e Furiosos 6 <span class="de-em"></span></a>
                 </h3>
                 <p>Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio! Elementum tortor sociis in eu dis dictumst pulvinar lorem nec aliquam a nascetur.</p>
               </div>
               <div class="feature col-sm-6 col-md-3">
                 <a href="#">
-                  <img src="resources/img/feature-2.png" alt="Feature 2" class="img-responsive" />
+                  <img src="resources/img/star.jpg" alt="Feature 2" class="img-responsive" />
                 </a>
                 <h3 class="title">
-                  <a href="#">24/7 <span class="de-em">Support</span></a>
+                  <a href="#">Star Trek 2 <span class="de-em">Support</span></a>
                 </h3>
                 <p>Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio! Elementum tortor sociis in eu dis dictumst pulvinar lorem nec aliquam a nascetur.</p>
               </div>
               <div class="feature col-sm-6 col-md-3">
                 <a href="#">
-                  <img src="resources/img/feature-3.png" alt="Feature 3" class="img-responsive" />
+                  <img src="resources/img/sm2.jpg" alt="Feature 3" class="img-responsive" />
                 </a>
                 <h3 class="title">
-                  <a href="#">Free Upgrade <span class="de-em">Assistance</span></a>
+                  <a href="#">Espetacular Homem Aranha <span class="de-em"></span></a>
                 </h3>
                 <p>Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio! Elementum tortor sociis in eu dis dictumst pulvinar lorem nec aliquam a nascetur.</p>
               </div>
               <div class="feature col-sm-6 col-md-3">
                 <a href="#">
-                  <img src="resources/img/feature-4.png" alt="Feature 4" class="img-responsive" />
+                  <img src="resources/img/par3.jpg" alt="Feature 4" class="img-responsive" />
                 </a>
                 <h3 class="title">
-                  <a href="#">99.9% <span class="de-em">Uptime</span></a>
+                  <a href="#">Se Beber Não Case III <span class="de-em"></span></a>
                 </h3>
                 <p>Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio! Elementum tortor sociis in eu dis dictumst pulvinar lorem nec aliquam a nascetur.</p>
               </div>
@@ -307,116 +321,51 @@
           
           <div class="block features">
             <h2 class="title-divider">
-              <span>Séries<span class="de-em">Séries</span></span>
+              <span>Séries<span class="de-em"></span></span>
               <small>Fique por dentro do que há de novo.</small>
             </h2>
             <div class="row">
               <div class="feature col-sm-6 col-md-3">
                 <a href="#">
-                  <img src="resources/img/feature-1.png" alt="Feature 1" class="img-responsive" />
+                  <img src="resources/img/arrow2.jpg" alt="Feature 1" class="img-responsive" />
                 </a>
                 <h3 class="title">
-                  <a href="#">Mobile <span class="de-em">Friendly</span></a>
+                  <a href="#">Arrow <span class="de-em"></span></a>
                 </h3>
                 <p>Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio! Elementum tortor sociis in eu dis dictumst pulvinar lorem nec aliquam a nascetur.</p>
               </div>
               <div class="feature col-sm-6 col-md-3">
                 <a href="#">
-                  <img src="resources/img/feature-2.png" alt="Feature 2" class="img-responsive" />
+                  <img src="resources/img/got2.jpg" alt="Feature 2" class="img-responsive" />
                 </a>
                 <h3 class="title">
-                  <a href="#">24/7 <span class="de-em">Support</span></a>
+                  <a href="#">Game Of Thrones <span class="de-em"></span></a>
                 </h3>
                 <p>Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio! Elementum tortor sociis in eu dis dictumst pulvinar lorem nec aliquam a nascetur.</p>
               </div>
               <div class="feature col-sm-6 col-md-3">
                 <a href="#">
-                  <img src="resources/img/feature-3.png" alt="Feature 3" class="img-responsive" />
+                  <img src="resources/img/twd2.jpg" alt="Feature 3" class="img-responsive" />
                 </a>
                 <h3 class="title">
-                  <a href="#">Free Upgrade <span class="de-em">Assistance</span></a>
+                  <a href="#">The Walking Dead <span class="de-em"></span></a>
                 </h3>
                 <p>Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio! Elementum tortor sociis in eu dis dictumst pulvinar lorem nec aliquam a nascetur.</p>
               </div>
               <div class="feature col-sm-6 col-md-3">
                 <a href="#">
-                  <img src="resources/img/feature-4.png" alt="Feature 4" class="img-responsive" />
+                  <img src="resources/img/niki.jpg" alt="Feature 4" class="img-responsive" />
                 </a>
                 <h3 class="title">
-                  <a href="#">99.9% <span class="de-em">Uptime</span></a>
+                  <a href="#">Nikita <span class="de-em"></span></a>
                 </h3>
                 <p>Rhoncus adipiscing, magna integer cursus augue eros lacus porttitor magna. Dictumst, odio! Elementum tortor sociis in eu dis dictumst pulvinar lorem nec aliquam a nascetur.</p>
               </div>
             </div>
           </div>
-          
-          <!--Pricing Table-->
-          <div class="block">
-            <h2 class="title-divider">
-              <span>Pricing <span class="de-em">Plans</span></span>
-              <small>Competitive pricing plans to suit your needs</small>
-            </h2>
-            <div class="row">
-              <!-- Plan features -->
-              <div class="well well-sm text-center">
-                <h4 class="inline-el pad-right">
-                  <span>All Plans <span class="de-em">Include</span>:</span>
-                </h4>
-                <p class="inline-el pad-left muted">90 day money back guarantee <span class="spacer">//</span> 24/7 telephone support <span class="spacer">//</span> FREE Setup <span class="spacer">//</span> Migration Help <span class="spacer">//</span> Developer API</p>
-              </div>
-            </div>
-          </div>
-          <!--Customer testimonial-->
-          <div class="block testimonials margin-top-large">
-            <h2 class="title-divider">
-              <span>Novidades sobre Filme e Séries <span class="de-em">Tudo feito para você</span></span>
-              <small>99% of our customers recommend us!</small>
-            </h2>
-            <div class="row">
-              <div class="col-md-4">
-                <blockquote>
-                  <p>"It's totally awesome, we're could imagine life without it!"</p>
-                  <small>
-                    <img src="img/team/jimi.jpg" alt="Jimi Bloggs" class="img-circle" />
-                    Jimi Bloggs <span class="spacer">/</span> <a href="#">@mrjimi</a>
-                  </small>
-                </blockquote>
-              </div>
-              <div class="col-md-4">
-                <blockquote>
-                  <p>"10 out of 10, highly recommended!"</p>
-                  <small>
-                    <img src="img/team/jobs.jpg" alt="Jimi Bloggs" class="img-circle" />
-                    Steve Bloggs <span class="spacer">/</span> <a href="#">Founder of Apple</a>
-                  </small>
-                </blockquote>
-              </div>
-              <div class="col-md-4">
-                <blockquote>
-                  <p>"Our productivity sales are up! Couldn't be happier with this product!"</p>
-                  <small>
-                    <img src="img/team/adele.jpg" alt="Adele Bloggs" class="img-circle" />
-                    Adele Bloggs <span class="spacer">/</span> <a href="#">@iamadele</a>
-                  </small>
-                </blockquote>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
-      
-      <!-- ======== @Region: #content-below ======== -->
-      <div id="content-below" class="wrapper">
-        <div class="container">
-          <div class="row">
-            <div class="upsell">
-              <small class="muted">99.9% Uptime <span class="spacer">//</span> Free upgrade assistence <span class="spacer">//</span> 24/7 Support <span class="spacer">//</span> Plans from $19.99/month <span class="spacer">//</span> </small>
-              <a href="pricing.htm" class="btn btn-primary">Start your Free Trial Today! <i class="fa fa-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- FOOTER -->
       
       <!-- ======== @Region: #footer ======== -->
       <footer id="footer">

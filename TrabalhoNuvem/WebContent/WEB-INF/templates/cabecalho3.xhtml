@@ -58,7 +58,7 @@
                 <!--branding/logo-->
                 <h:link class="navbar-brand" outcome="/index">
                   <h1>
-                    <span>Cinema And</span>TV<span>.com</span>
+                    <span>TVeCinema</span>.com<span></span>
                   </h1>
                   </h:link>
                 <div class="slogan">Trabalho de Nuvem</div>
@@ -160,7 +160,14 @@
                     <ul class="dropdown-menu" role="menu" aria-labelledby="more-drop">
                     <li><h:link value="Nova Serie" outcome="/pages/insereSerie" /></li>
                   	  <li><h:link value="Lista Serie" outcome="/pages/listaSerie" /></li>
+                  	  <li><h:link value="Página Séries" outcome="/pages/Series" /></li>
                     </ul>
+                  </li>
+                  <li>
+                  <a href="#" class="dropdown-toggle" id="more-drop">
+                  Bem Vindo
+                  <h:outputLabel value="#{storageControll.name}" />
+                  </a>
                   </li>
                 </ul>
               </div>

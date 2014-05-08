@@ -21,4 +21,7 @@
     <filter-name>primeUploadFilter</filter-name>
     <servlet-name>Faces Servlet</servlet-name>
   </filter-mapping>
+  <session-config>
+        <session-timeout>20</session-timeout>
+    </session-config>
 </web-app>

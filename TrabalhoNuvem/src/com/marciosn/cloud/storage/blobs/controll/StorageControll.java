@@ -60,7 +60,7 @@ public class StorageControll {
 	private String nomeArquivo;
 	private String uri;
 	private String capa;
-	private String uriCapa;
+	private String uriCapa, name;
 
 	public static final String storageConnectionString = 
             "DefaultEndpointsProtocol=http;" + 
@@ -147,7 +147,6 @@ public class StorageControll {
      
         return ListarBlobs();
  }
-
 
     public String ListarBlobs() throws FileNotFoundException{
     	while(repositorio.getLista().size() > 0){
@@ -334,11 +333,12 @@ public class StorageControll {
     	return false;
     }
     
-    public void pegaSessao(){
+    public String pegaSessao(){
     	FacesContext context = FacesContext.getCurrentInstance();
     	HttpSession session = (HttpSession)context.getExternalContext().getSession(true);
-    	String name = (String) session.getAttribute("username");
+    	name = (String) session.getAttribute("username");
     	System.out.println("IMPRIMINDO O NOME DA SESSÃOOOOOOOOOO "+name);
+    	return name;
     }
     public String pegaCapa() throws InvalidKeyException, URISyntaxException, StorageException{
         CloudStorageAccount account;
@@ -371,57 +371,39 @@ public class StorageControll {
     public StreamedContent getFile() {  
         return file;  
     }
-    
-    
 	public Repositorio getRepositorio() {
 		return repositorio;
 	}
-
 	public void setRepositorio(Repositorio repositorio) {
 		this.repositorio = repositorio;
 	}
-
 	public String getNomeArquivo() {
 		return nomeArquivo;
 	}
-
-
 	public void setNomeArquivo(String nomeArquivo) {
 		this.nomeArquivo = nomeArquivo;
 	}
-
 	public UploadedFile getFile2() {
 		return file2;
 	}
-
 	public void setFile2(UploadedFile file2) {
 		this.file2 = file2;
 	}
-
 	public File getFile3() {
 		return file3;
 	}
-
 	public void setFile3(File file3) {
 		this.file3 = file3;
 	}
-
-
 	public String getUri() {
 		return uri;
 	}
-
-
 	public void setUri(String uri) {
 		this.uri = uri;
 	}
-
-
 	public Part getFile4() {
 		return file4;
 	}
-
-
 	public void setFile4(Part file4) {
 		this.file4 = file4;
 	}
@@ -431,12 +413,16 @@ public class StorageControll {
 	public void setCapa(String capa) {
 		this.capa = capa;
 	}
-
-
 	public String getUriCapa() {
 		return uriCapa;
 	}
 	public void setUriCapa(String uriCapa) {
 		this.uriCapa = uriCapa;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 }
