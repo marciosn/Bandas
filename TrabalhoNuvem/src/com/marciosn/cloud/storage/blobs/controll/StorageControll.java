@@ -55,12 +55,13 @@ public class StorageControll {
 
 	@ManagedProperty(value="#{repositorio}")
 	private Repositorio repositorio;
-	private Bean bean;
+	private CtlBean bean;
 	private UploadedFile file2;
 	private File file3;
 	private Part file4;
 	private StreamedContent file;  
 	private String nomeArquivo, uri, capa, uriCapa, name;
+	
 	private List<String> images;
 	String nomeContainer = pegaSessao();
 
@@ -138,7 +139,6 @@ public class StorageControll {
      
         return ListarBlobs();
  }
-    @PostConstruct
     public String ListarBlobs() throws FileNotFoundException{
     	while(repositorio.getLista().size() > 0 || repositorio.getListamusics().size() > 0
     			|| repositorio.getListvideos().size() > 0){
@@ -151,6 +151,7 @@ public class StorageControll {
 			storageAccount = CloudStorageAccount.parse(storageConnectionString);
 	    	CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
 	    	CloudBlobContainer container = blobClient.getContainerReference(nomeContainer);
+	    	if(container.exists()){
 	    	for (ListBlobItem blobItem : container.listBlobs()) {
 	    	    String uri = blobItem.getUri().toString();
 	        	Blob blob = new Blob(uri);
@@ -163,7 +164,11 @@ public class StorageControll {
 	        			if(uri.contains(".mp4") || uri.contains(".avi") || uri.contains(".3gp") || uri.contains(".mkv")){
 	        				repositorio.getListvideos().add(blob);
 	        			}
+	        	}
+				
 	    	}
+	    	else
+	    		return "/pages/exception";
 		} catch (InvalidKeyException invalidKeyException) {
 			System.out.print("InvalidKeyException encontrado no metodo ListarBlobs(): ");
 			System.out.println(invalidKeyException.getMessage());
@@ -181,10 +186,7 @@ public class StorageControll {
 			return "/pages/exception";
 			//System.exit(-1);
 		}
-		/*Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
-		flash.setKeepMessages(true);
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage	(FacesMessage.SEVERITY_INFO, "Operation Done", null));*/
-		return "/pages/filme";
+		return "/pages/paginaBanda";
 
     }
     
@@ -203,10 +205,6 @@ public class StorageControll {
 			    	//if (blobItem instanceof CloudBlob) {
 			    	System.out.println("Testando if ---->" + uri);
 			        CloudBlob blob = (CloudBlob) blobItem;
-			        //blob.download(new FileOutputStream(blob.getName()));
-			        //CloudBlobDirectory directory = container.getDirectoryReference("Downloads/");
-			        //String fileUri = String.format("%s/%s", directory.getUri(), destination.getName());
-			        //System.out.println("FileUri" + fileUri);
 			        
 			        System.out.println("Blob getname  ---->>>" + blob.getName());
 			        
@@ -433,12 +431,11 @@ public class StorageControll {
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	public List<String> getImages() {
 		return images;
 	}
-
 	public void setImages(List<String> images) {
 		this.images = images;
 	}
+
 }

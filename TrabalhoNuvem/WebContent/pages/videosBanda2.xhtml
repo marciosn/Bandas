@@ -1,0 +1,56 @@
+<ui:composition template="/WEB-INF/templates/geral.xhtml"
+		xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+	 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	 	xmlns:f="http://java.sun.com/jsf/core"
+	 	xmlns:p="http://primefaces.org/ui">
+
+
+	<ui:define name="conteudo">
+<ui:insert name="cabecalho">
+		<ui:include src="/WEB-INF/templates/cabecalho3.xhtml" />
+</ui:insert>
+
+      <div id="content">
+        <div class="container" id="about">
+        	<h1>Vídeos da Banda</h1>
+        	
+        	
+        	<ui:repeat var="var" value="#{repositorio.listaVIDEOS}">
+        		<!-- <p:lightBox> -->
+        			
+				 	<div class="col-md-3 col-sm-4 col-xs-6 img">
+				  		<a class="thumbnail fancybox" href="#{var.uri}" >
+							<video controls="" name="media">
+								<source src="#{var.uri}" type="video/mp4" width="320" height="240"/>
+							</video>
+							<!-- <p:media value="#{var.uri}" width="190" height="250">
+    						<f:param name="autoPlay" value="false" />
+							</p:media> -->
+						</a>
+					</div>
+        	</ui:repeat>
+          <div class="block features">
+
+          </div>
+        </div>
+      </div>
+      
+      <!-- ======== @Region: #content-below ======== -->
+      <div id="content-below" class="wrapper">
+        <div class="container">
+          <div class="row">
+            <div class="upsell">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+<ui:insert name="footer">
+		<ui:include src="/WEB-INF/templates/footer.xhtml" />
+</ui:insert>
+
+	</ui:define>
+	
+</ui:composition>

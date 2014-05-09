@@ -15,8 +15,9 @@ public class Repositorio {
 	List<Blob> lista = new ArrayList<Blob>();
 	List<Blob> listamusics = new ArrayList<Blob>();
 	List<Blob> listvideos = new ArrayList<Blob>();
-	List<Blob> listapdfs = new ArrayList<Blob>();
-	List<Blob> listageneral = new ArrayList<Blob>();
+	List<Blob> listaIMAGES = new ArrayList<Blob>();
+	List<Blob> listaMUSICAS = new ArrayList<Blob>();
+	List<Blob> listaVIDEOS = new ArrayList<Blob>();
 	List<Blob> listaUris = new ArrayList<Blob>();
 	public List<Blob> getLista() {
 		return lista;
@@ -41,28 +42,10 @@ public class Repositorio {
 	public void setListvideos(List<Blob> listvideos) {
 		this.listvideos = listvideos;
 	}
-
-	public List<Blob> getListapdfs() {
-		return listapdfs;
-	}
-
-	public void setListapdfs(List<Blob> listapdfs) {
-		this.listapdfs = listapdfs;
-	}
-
-	public List<Blob> getListageneral() {
-		return listageneral;
-	}
-
-	public void setListageneral(List<Blob> listageneral) {
-		this.listageneral = listageneral;
-	}
-
 	public String insere(Blob b){
 		lista.add(b);
 		return "lista";
 	}
-
 	public List<Blob> getListaUris() {
 		return listaUris;
 	}
@@ -71,5 +54,27 @@ public class Repositorio {
 		this.listaUris = listaUris;
 	}
 
-	
+	public List<Blob> getListaIMAGES() {
+		return listaIMAGES;
+	}
+
+	public void setListaIMAGES(List<Blob> listaIMAGES) {
+		this.listaIMAGES = listaIMAGES;
+	}
+
+	public List<Blob> getListaMUSICAS() {
+		return listaMUSICAS;
+	}
+
+	public void setListaMUSICAS(List<Blob> listaMUSICAS) {
+		this.listaMUSICAS = listaMUSICAS;
+	}
+
+	public List<Blob> getListaVIDEOS() {
+		return listaVIDEOS;
+	}
+
+	public void setListaVIDEOS(List<Blob> listaVIDEOS) {
+		this.listaVIDEOS = listaVIDEOS;
+	}
 }

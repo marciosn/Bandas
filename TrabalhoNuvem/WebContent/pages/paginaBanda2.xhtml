@@ -67,17 +67,6 @@ margin-top: -230px;
 	<p:messages showDetail="true" closable="true"/>
 	
 	      <div id="content">
-	  <!-- <div id="highlighted">
-        <div class="inner">
-          <section class="static-banner container">
-            <div class="slide">
-              <div class="col-md-7">
-                <img src="../resources/img/slide1.png" alt="Slide 1" class="img-responsive" />
-              </div>
-            </div>
-          </section>
-        </div>
-      </div> -->
         <div class="">
           
           <div class="row">
@@ -88,9 +77,9 @@ margin-top: -230px;
 	<h1>Fotos Da Banda</h1>
 	<p:rating value="#{ratingController.rating2}" stars="10" cancel="false"/>
 	<br/>
-	<h:link value="Videos da Banda" outcome="/pages/videosBanda"/>
+	<h:link value="Videos da Banda" outcome="/pages/videosBanda2"/>
 	
-	<p:contentFlow value="#{repositorio.lista}" var="image" width="800" height="450">
+	<p:contentFlow value="#{repositorio.listaIMAGES}" var="image" width="800" height="450">
     <p:graphicImage value="#{image.uri}" styleClass="content" />
     <div class="caption">#{image}</div>
 	</p:contentFlow>
@@ -100,7 +89,7 @@ margin-top: -230px;
 	<div class="span4 pull-right">
 	<h1>Músicas da Banda</h1>
     <h:dataTable styleClass="table table-condensed"
-		 value="#{repositorio.listamusics}" var="var" rendered="#{not empty repositorio.listamusics}"
+		 value="#{repositorio.listaMUSICAS}" var="var" rendered="#{not empty repositorio.listaMUSICAS}"
 		 showCaption="true">
 			<h:column>
 				<f:facet name="header">
