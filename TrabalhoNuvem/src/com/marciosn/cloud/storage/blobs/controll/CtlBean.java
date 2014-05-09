@@ -54,9 +54,9 @@ StorageControll sc = new StorageControll();
 		 
 		while(repositorio.getListaIMAGES().size() > 0 || repositorio.getListaMUSICAS().size() > 0
 	    			|| repositorio.getListaVIDEOS().size() > 0){
-	    		sc.LimpaLista(sc.getRepositorio().getLista());
-	    		sc.LimpaLista(sc.getRepositorio().getListamusics());
-	    		sc.LimpaLista(sc.getRepositorio().getListvideos());
+	    		sc.LimpaLista(repositorio.getListaIMAGES());
+	    		sc.LimpaLista(repositorio.getListaMUSICAS());
+	    		sc.LimpaLista(repositorio.getListaVIDEOS());
 	    	}
 		 
 	 CloudStorageAccount storageAccount;
