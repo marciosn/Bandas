@@ -32,10 +32,14 @@
     						 data-toggle="modal" data-target="#processing-modal"/>  
   
 					</h:form>
-			</h:panelGrid>	
-
-
-      				
+			</h:panelGrid>
+			
+			<h:form>
+			 <p:fileUpload value="#{storageControll.file2}" mode="advanced" dragDropSupport="false"
+                  multiple="true" update="messages" sizeLimit="100000" fileLimit="3" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+ 
+    		<p:growl id="messages" showDetail="true"/>
+			</h:form>	
       </div>
       
   </div>

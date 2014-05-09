@@ -1,0 +1,129 @@
+<ui:composition template="/WEB-INF/templates/geral.xhtml"
+		xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+	 	xmlns:ui="http://java.sun.com/jsf/facelets"
+	 	xmlns:f="http://java.sun.com/jsf/core"
+	 	xmlns:p="http://primefaces.org/ui"
+	 	>
+
+
+	<ui:define name="conteudo">
+<ui:insert name="cabecalho">
+		<ui:include src="/WEB-INF/templates/cabecalho3.xhtml" />
+</ui:insert>
+<h:head>
+	  <style type="text/css">   
+.span12 {
+  width: 940px;
+}
+
+.span11 {
+  width: 860px;
+}
+
+.span10 {
+  width: 780px;
+}
+
+.span9 {
+  width: 700px;
+}    
+.span8 {
+  width: 620px;
+  border-color: #000000;
+}
+
+.span7 {
+  width: 540px;
+}
+
+.span6 {
+  width: 460px;
+}
+
+.span5 {
+  width: 380px;
+}
+
+.span4 {
+  width: 300px;
+}
+
+.span3 {
+  width: 220px;
+}
+
+.span2 {
+  width: 140px;
+}
+.span4{
+margin-right: -290px;
+margin-top: -250px;
+}         
+	    </style>
+</h:head>
+		
+	<div class="container">
+	<p:messages showDetail="true" closable="true"/>
+	
+	      <div id="content">
+	  <!-- <div id="highlighted">
+        <div class="inner">
+          <section class="static-banner container">
+            <div class="slide">
+              <div class="col-md-7">
+                <img src="../resources/img/slide1.png" alt="Slide 1" class="img-responsive" />
+              </div>
+            </div>
+          </section>
+        </div>
+      </div> -->
+        <div class="">
+          
+          <div class="row">
+            <!--Main Content-->
+    <div class="col-md-9 blog-post">
+            
+    <div class="span10">
+	<h1>Fotos Da Banda</h1> <h:link value="Videos da Banda" outcome="/pages/videosBanda"/>
+	
+	<!-- <p:galleria value="#{repositorio.lista}" var="image" panelWidth="800" panelHeight="450" showCaption="true">
+    <p:graphicImage value="#{image.uri}" alt="Nome da Imagem: #{image.uri}" title="#{image.uri}"/>
+	</p:galleria> -->
+	
+	<p:contentFlow value="#{repositorio.lista}" var="image" width="800" height="450">
+    <p:graphicImage value="#{image.uri}" styleClass="content" />
+    <div class="caption">#{image}</div>
+	</p:contentFlow>
+	</div>
+	<div class="span4 pull-right">
+	<h1>Músicas da Banda</h1>
+    <h:dataTable styleClass="table table-condensed"
+		 value="#{repositorio.listamusics}" var="var" rendered="#{not empty repositorio.listamusics}"
+		 showCaption="true">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="" class="label label-info"/>
+				</f:facet>
+				 <div class="row">
+				 <div class="col-md-3 col-sm-4 col-xs-6 img">
+				 <!-- <a href="#">
+				 	<h:link value="#{var.uri}"/>
+				 </a> -->
+					<audio src="#{var.uri}" controls="" preload="auto">
+					</audio>
+				</div>
+				</div>
+			</h:column>
+	</h:dataTable>
+	</div>
+    </div>
+  	</div>
+    </div>
+    </div>		
+	</div>
+	<ui:insert name="footer">
+		<ui:include src="/WEB-INF/templates/footer.xhtml" />
+	</ui:insert>
+	</ui:define>
+</ui:composition>

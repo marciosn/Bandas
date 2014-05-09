@@ -9,8 +9,10 @@ import java.io.OutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.security.InvalidKeyException;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
@@ -21,6 +23,7 @@ import javax.faces.context.Flash;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import javax.ws.rs.POST;
 
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.IOUtils;
@@ -58,6 +61,7 @@ public class StorageControll {
 	private Part file4;
 	private StreamedContent file;  
 	private String nomeArquivo, uri, capa, uriCapa, name;
+	private List<String> images;
 	String nomeContainer = pegaSessao();
 
 	public static final String storageConnectionString = 
@@ -134,7 +138,7 @@ public class StorageControll {
      
         return ListarBlobs();
  }
-
+    @PostConstruct
     public String ListarBlobs() throws FileNotFoundException{
     	while(repositorio.getLista().size() > 0 || repositorio.getListamusics().size() > 0
     			|| repositorio.getListvideos().size() > 0){
@@ -361,7 +365,15 @@ public class StorageControll {
     	String error = "http://i.imgbox.com/cFnnrfE5.jpg"; 
     	uriCapa = error;
     	return uriCapa;
-
+    }
+    @PostConstruct
+    public void SlideImages(){
+    	images = new ArrayList<String>();
+    	for(int i=0; i < repositorio.getLista().size();i++){
+    		int p = i++;
+    		images.add(repositorio.getLista().get(p).getUri());
+    	}
+    	
     }
       
     public StreamedContent getFile() {  
@@ -420,5 +432,13 @@ public class StorageControll {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public List<String> getImages() {
+		return images;
+	}
+
+	public void setImages(List<String> images) {
+		this.images = images;
 	}
 }
