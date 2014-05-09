@@ -11,44 +11,115 @@
 		<ui:include src="/WEB-INF/templates/cabecalho3.xhtml" />
 </ui:insert>
 <h:head>
-	  <!-- <h:outputStylesheet library="css" name="bootstrap.css"></h:outputStylesheet> -->
+	  <style type="text/css">       
+.span8 {
+  width: 620px;
+  border-color: #000000;
+}
+
+.span7 {
+  width: 540px;
+}
+
+.span6 {
+  width: 460px;
+}
+
+.span5 {
+  width: 380px;
+}
+
+.span4 {
+  width: 300px;
+}
+
+.span3 {
+  width: 220px;
+}
+
+.span2 {
+  width: 140px;
+}
+.span4{
+margin-right: -290px;
+margin-top: -290px;
+}         
+	    </style>
 </h:head>
-	
-	
+		
 	<div class="container">
 	<p:messages showDetail="true" closable="true"/>
 	
 	      <div id="content">
         <div class="">
-          <h2 class="title-divider">
-            <span>Filme <span class="de-em">Se Beber Não Case - Parte III</span></span>
-            
-          </h2>
+          
           <div class="row">
             <!--Main Content-->
             <div class="col-md-9 blog-post">
-              <!-- Blog post -->
-              <div class="media row">
-                <div class="col-md-1 date-md">
-                  <!-- Date desktop -->
-                  <div class="date-wrapper"> <span class="date-m">Jan</span> <span class="date-d">07</span>
-</div>
-                  <!-- Meta details desktop -->
-    
-                </div>
-                <div class="col-md-11 media-body">
-                  <div class="tags"><a href="#" class="tag">coding</a> / <a href="#" class="type">feature</a></div>
-                  <h3 class="title media-heading">
-                    Informações Sobre o Filme
-                  </h3>
-                  <!-- Meta details mobile -->
-                  <ul class="list-inline meta text-muted">
-                    <li><i class="fa fa-calendar"></i> Mon 7th Jan 2013</li>
-                    <li><i class="fa fa-user"></i> <a href="#">Erin</a></li>
-                  </ul>
-                  <!-- <img src="#{storageControll.uriCapa}" alt="Capa do Filme" class="media-object img-responsive" /> -->
-                  <img src="../resources/img/par3.jpg" alt="Capa do Filme" class="media-object img-responsive" />
-                <h:form>
+            
+    <div class="span7">
+	<h1>Fotos Da Banda</h1>
+    <h:dataTable styleClass="table table-condensed"
+		 value="#{repositorio.lista}" var="var" rendered="#{not empty repositorio.lista}" id="tabela1"
+		 showCaption="true">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="" class="label label-info"/>
+				</f:facet>
+				 <div class="row">
+				 <div class="col-md-3 col-sm-4 col-xs-6 img">
+				 <a href="#" target="_blank">
+						<h:graphicImage value="#{var.uri}" width="320" height="240" class="img-thumbnail"
+						alt="Image Description for #{var.uri}" title="Click to download"/>
+						
+				</a>
+				</div> 
+				</div>
+			</h:column>
+
+	</h:dataTable>
+	</div>
+	<div class="span4 pull-right">
+	<h1>Músicas da Banda</h1>
+    <h:dataTable styleClass="table table-condensed"
+		 value="#{repositorio.listamusics}" var="var" rendered="#{not empty repositorio.listamusics}" id="tabela1"
+		 showCaption="true">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="" class="label label-info"/>
+				</f:facet>
+				 <div class="row">
+				 <div class="col-md-3 col-sm-4 col-xs-6 img">
+				 <!-- <a href="#">
+				 	<h:link value="#{var.uri}"/>
+				 </a> -->
+					<audio src="#{var.uri}" controls="" preload="auto">
+					</audio>
+				</div>
+				</div>
+			</h:column>
+	</h:dataTable>
+	</div>
+	<div class="span7">
+	<h1>Vídeos da Banda</h1>
+    <h:dataTable styleClass="table table-condensed"
+		 value="#{repositorio.listvideos}" var="var" rendered="#{not empty repositorio.listvideos}" id="tabela1"
+		 showCaption="true">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="" class="label label-info"/>
+				</f:facet>
+				 <div class="row">
+				 <div class="col-md-3 col-sm-4 col-xs-6 img">
+					<video controls="" name="media">
+						<source src="#{var.uri}" type="video/mp4"/>
+					</video>
+				</div>
+				</div>
+			</h:column>
+	</h:dataTable>
+ 	</div>
+			<h:form>
                 <h:outputLabel id="capafilme" for="capafilme" value="Selecione a capa do filme" /><p/>
                   
                   <h:selectOneMenu id="uris" label="uris" required="false" value="#{storageControll.capa}" >
@@ -57,90 +128,16 @@
 					itemValue="#{var}" itemLabel="#{var.uri}" />
 				</h:selectOneMenu>
 				<p/>
-				<h:commandButton id="salvar" class="btn btn-primary" value="Salvar" action="#{storageControll.pegaCapa}" >
-				<!-- <f:setPropertyActionListener target="#{storageControll.capa}" value="#{var}" /> -->
-				</h:commandButton>
+				<h:commandButton id="salvar" class="btn btn-primary" value="Salvar" action="#{storageControll.pegaCapa}"/>
 				 <h:commandButton value="Buscar" action="#{storageControll.pegaCapa}" class="btn btn-primary"/>
 				</h:form>
-                  <p>ltrices platea ridiculus nascetur vut aliquet odio vel placerat! A, ultricies augue turpis </p>
-                  
-                </div>
-              </div>
-              <!--Comments-->
-              <div class="comments" id="comments">
-                <h3>
-                  Comments (10)
-                </h3>
-                <ul class="media-list">
-                  <li class="media">
-                    <a class="pull-left" href="#">
-                      <img src="img/team/adele.jpg" alt="Picture of Erin" class="media-object img-thumbnail img-responsive" />
-                    </a>
-                    <div class="media-body">
-                      <ul class="list-inline meta text-muted">
-                        <li><i class="fa fa-calendar"></i> Tue 15th Apr 2014</li>
-                        <li><i class="fa fa-user"></i> <a href="#">Erin</a></li>
-                      </ul>
-                      <h5 class="media-heading">
-                        Turpis odio dictumst tempor ac et!
-                      </h5>
-                      <p>Turpis odio dictumst tempor ac et!Turpis odio dictumst tempor ac et!Turpis odio dictumst tempor ac et!Turpis odio dictumst tempor ac et!</p>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <!--Sidebar-->
-            <div class="col-md-3 sidebar sidebar-right">
-              <div class="inner">
-                <div class="block">
-                <h:form>
-               <h:inputText class="form-control" id="capa" label="capa" value="#{storageControll.capa}" />
-                <h:commandButton value="Buscar" action="#{storageControll.pegaCapa}" class="btn btn-primary"/>
-                 </h:form>
-                </div>
-                <div class="block">
-                  <h4 class="title-divider">
-                    <span>Tags</span>
-                  </h4>
-                  <div class="tag-cloud">
-                    <span><a href="#">culture</a> (7)</span>
-                    <span><a href="#">general</a> (61)</span>
-                    <span><a href="#">coding</a> (12)</span>
-                    <span><a href="#">design</a> (35)</span>
-                    <span><a href="#">weather</a> (86)</span>
-                    <span><a href="#">jobs</a> (77)</span>
-                    <span><a href="#">health</a> (9)</span>
-                  </div>
-                </div>
-                <div class="block">
-                  <h4 class="title-divider">
-                    <span>Archive</span>
-                  </h4>
-                  <ul class="big-list tags">
-                    <li><a href="#">April 2014</a> (71)</li>
-                    <li><a href="#">March 2014</a> (43)</li>
-                    <li><a href="#">February 2014</a> (93)</li>
-                    <li><a href="#">January 2014</a> (25)</li>
-                    <li><a href="#">December 2013</a> (34)</li>
-                    <li><a href="#">November 2013</a> (89)</li>
-                    <li><a href="#">October 2013</a> (70)</li>
-                  </ul>
-                </div>
-                <div class="block">
-                  <a href="#" class="btn btn-warning"><i class="fa fa-rss"></i> Subscribe via RSS feed</a>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </div>		
 	</div>
-	
-
 	<ui:insert name="footer">
 		<ui:include src="/WEB-INF/templates/footer.xhtml" />
 	</ui:insert>
 	</ui:define>
-	
 </ui:composition>

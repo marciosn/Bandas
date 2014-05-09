@@ -57,10 +57,8 @@ public class StorageControll {
 	private File file3;
 	private Part file4;
 	private StreamedContent file;  
-	private String nomeArquivo;
-	private String uri;
-	private String capa;
-	private String uriCapa, name;
+	private String nomeArquivo, uri, capa, uriCapa, name;
+	String nomeContainer = pegaSessao();
 
 	public static final String storageConnectionString = 
             "DefaultEndpointsProtocol=http;" + 
@@ -73,15 +71,6 @@ public class StorageControll {
         	File f = CriaFile(file2);
         	String path = f.getAbsolutePath();
         	nomeArquivo = file2.getFileName();
-        
-        	if(ValidaImage(nomeArquivo) != true){
-        		
-        		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
-        		flash.setKeepMessages(true);
-        		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage	(FacesMessage.SEVERITY_ERROR, "Invalid Format!!!", null));
-        		return "/pages/upload";
-        	}
-        	else{
         	
         	System.out.println("nome do arquivo no metodo upload: " + nomeArquivo);
    
@@ -89,10 +78,10 @@ public class StorageControll {
             CloudBlobClient serviceClient;
             CloudBlobContainer container;
             CloudBlockBlob blob;
-
+            
             account = CloudStorageAccount.parse(storageConnectionString);
             serviceClient = account.createCloudBlobClient();
-            container = serviceClient.getContainerReference("myimages");
+            container = serviceClient.getContainerReference(nomeContainer);
             
             container.createIfNotExist();
             BlobContainerPermissions containerPermissions;
@@ -113,8 +102,6 @@ public class StorageControll {
             System.out.println("Realizando Upload do arquivo --> " + nomeArquivo);
             System.out.println("Processamento completo.");
             
-
-        }
     }
         catch (FileNotFoundException fileNotFoundException)
         {
@@ -149,19 +136,29 @@ public class StorageControll {
  }
 
     public String ListarBlobs() throws FileNotFoundException{
-    	while(repositorio.getLista().size() > 0){
-    		LimpaLista();
+    	while(repositorio.getLista().size() > 0 || repositorio.getListamusics().size() > 0
+    			|| repositorio.getListvideos().size() > 0){
+    		LimpaLista(repositorio.getLista());
+    		LimpaLista(repositorio.getListamusics());
+    		LimpaLista(repositorio.getListvideos());
     	}
     	CloudStorageAccount storageAccount;
 		try {
 			storageAccount = CloudStorageAccount.parse(storageConnectionString);
 	    	CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
-	    	CloudBlobContainer container = blobClient.getContainerReference("myimages");
+	    	CloudBlobContainer container = blobClient.getContainerReference(nomeContainer);
 	    	for (ListBlobItem blobItem : container.listBlobs()) {
 	    	    String uri = blobItem.getUri().toString();
 	        	Blob blob = new Blob(uri);
-	            repositorio.getLista().add(blob);
-
+	        	if(uri.contains(".jpg") || uri.contains(".png") || uri.contains(".gif") || uri.contains(".jpeg")){
+	        		repositorio.getLista().add(blob);
+	        	}else
+	        		if(uri.contains(".mp3")){
+	        			repositorio.getListamusics().add(blob);
+	        		}else
+	        			if(uri.contains(".mp4") || uri.contains(".avi") || uri.contains(".3gp") || uri.contains(".mkv")){
+	        				repositorio.getListvideos().add(blob);
+	        			}
 	    	}
 		} catch (InvalidKeyException invalidKeyException) {
 			System.out.print("InvalidKeyException encontrado no metodo ListarBlobs(): ");
@@ -183,7 +180,7 @@ public class StorageControll {
 		/*Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
 		flash.setKeepMessages(true);
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage	(FacesMessage.SEVERITY_INFO, "Operation Done", null));*/
-		return "/pages/list";
+		return "/pages/filme";
 
     }
     
@@ -194,7 +191,7 @@ public class StorageControll {
     	try {
 			CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
 			CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
-			CloudBlobContainer container = blobClient.getContainerReference("myimages");
+			CloudBlobContainer container = blobClient.getContainerReference(nomeContainer);
 			
 			for (ListBlobItem blobItem : container.listBlobs()) {
 				String s = blobItem.getUri().toString();
@@ -256,7 +253,7 @@ public class StorageControll {
 
     		CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
     		CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
-    		CloudBlobContainer container = blobClient.getContainerReference("myimages");
+    		CloudBlobContainer container = blobClient.getContainerReference(nomeContainer);
     		//CloudBlockBlob blob = container.getBlockBlobReference("a5.jpg");
     		CloudBlockBlob blob = container.getBlockBlobReference(nomeArquivo);
     		
@@ -289,12 +286,12 @@ public class StorageControll {
     	return ListarBlobs();
     }
     
-    public String LimpaLista(){
+    public String LimpaLista(List<Blob> l){
     	System.out.println("Entrou no método de limpar lista");
 
-    	for(int i=0 ; i < repositorio.getLista().size();i++){
-        	System.out.println("Pegando do arraylist: " + repositorio.getLista().get(i).getUri() +" Indice --> "+i);
-        	repositorio.getLista().remove(i);
+    	for(int i=0 ; i < l.size();i++){
+        	System.out.println("Pegando do arraylist: " + l.get(i).getUri() +" Indice --> "+i);
+        	l.remove(i);
         }
     	return "/pages/list?faces-redirect=true";
     }
@@ -337,7 +334,6 @@ public class StorageControll {
     	FacesContext context = FacesContext.getCurrentInstance();
     	HttpSession session = (HttpSession)context.getExternalContext().getSession(true);
     	name = (String) session.getAttribute("username");
-    	System.out.println("IMPRIMINDO O NOME DA SESSÃOOOOOOOOOO "+name);
     	return name;
     }
     public String pegaCapa() throws InvalidKeyException, URISyntaxException, StorageException{
@@ -349,7 +345,7 @@ public class StorageControll {
         System.out.println("A capa recebida é :" + capa);
         account = CloudStorageAccount.parse(storageConnectionString);
         serviceClient = account.createCloudBlobClient();
-        container = serviceClient.getContainerReference("myimages");
+        container = serviceClient.getContainerReference(nomeContainer);
     	
     	for (ListBlobItem blobItem : container.listBlobs()) {
     	    String uri = blobItem.getUri().toString();
