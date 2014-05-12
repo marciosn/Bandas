@@ -74,8 +74,23 @@ public class StorageControll {
         try
         {
         	File f = CriaFile(file2);
+        	if(verificaFileNull(f) == true){
+        		System.out.println("Parametro null");
+    			Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
+        		flash.setKeepMessages(true);
+        		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage	(FacesMessage.SEVERITY_WARN, "Selecione um Arquivo para Upload!!!!", null));
+    			return "/pages/upload";
+        	}
         	String path = f.getAbsolutePath();
         	nomeArquivo = file2.getFileName();
+        	
+        	if(nomeContainer == null || nomeContainer.contains(" ")){
+    			System.out.println("Parametro null");
+    			Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
+        		flash.setKeepMessages(true);
+        		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage	(FacesMessage.SEVERITY_INFO, "O Armazenamento não pode ser feito!!!", null));
+    			return "/pages/upload";
+    		}
         	
         	System.out.println("nome do arquivo no metodo upload: " + nomeArquivo);
    
@@ -364,7 +379,14 @@ public class StorageControll {
     	uriCapa = error;
     	return uriCapa;
     }
-    @PostConstruct
+    public boolean verificaFileNull(File f){
+    	if(f == null){
+    		return true;
+    	}
+    	else
+    	return false;
+    }
+/*    @PostConstruct
     public void SlideImages(){
     	images = new ArrayList<String>();
     	for(int i=0; i < repositorio.getLista().size();i++){
@@ -372,7 +394,7 @@ public class StorageControll {
     		images.add(repositorio.getLista().get(p).getUri());
     	}
     	
-    }
+    }*/
       
     public StreamedContent getFile() {  
         return file;  

@@ -11,6 +11,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.context.Flash;
 
 import org.primefaces.event.RateEvent;
 
@@ -49,7 +50,10 @@ StorageControll sc = new StorageControll();
 		
 		if(nomeContainer2 == null || nomeContainer2.contains(" ")){
 			System.out.println("Parametro null");
-			return "/pages/exception";
+			Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
+    		flash.setKeepMessages(true);
+    		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage	(FacesMessage.SEVERITY_WARN, "Não pode existir espaços no nome do container", null));
+			return "/pages/listaBandas";
 		}
 		 
 		while(repositorio.getListaIMAGES().size() > 0 || repositorio.getListaMUSICAS().size() > 0
