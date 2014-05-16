@@ -20,11 +20,12 @@ public class RegistroBean {
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
 	
 	public String CadastraUsuario(){
-		if(usuario.getNome() == null || usuario.getNome().contains(" ")){
+		if(usuario.getNome() == null || usuario.getNome().contains(" ") 
+				|| usuario.getNome().contains(usuario.getNome().toUpperCase())){
 			System.out.println("Parametro null");
 			Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
     		flash.setKeepMessages(true);
-    		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage	(FacesMessage.SEVERITY_WARN, "O Username NÃO PODE conter espaços!!!!", null));
+    		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage	(FacesMessage.SEVERITY_ERROR, "Username Inválido!!!!", null));
 			return "registro";
 		}
 		try {
@@ -40,7 +41,7 @@ public class RegistroBean {
 		ListaUsuario();
 		return "login";
 	}
-	public void ListaUsuario(){
+	public List<Usuario> ListaUsuario(){
 		List<Usuario> usuarios = usuarioDAO.find();
 		for(Usuario u: usuarios){
 			System.out.println("Nome "+ u.getNome());
@@ -48,6 +49,7 @@ public class RegistroBean {
 			System.out.println("Email "+ u.getEmail());
 			System.out.println("=====================");
 		}
+		return usuarios;
 	}
 	
 	public Usuario getUsuario() {

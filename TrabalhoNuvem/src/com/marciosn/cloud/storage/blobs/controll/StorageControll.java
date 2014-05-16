@@ -66,7 +66,7 @@ public class StorageControll {
 	String nomeContainer = pegaSessao();
 
 	public static final String storageConnectionString = 
-            "DefaultEndpointsProtocol=http;" + 
+            "DefaultEndpointsProtocol=https;" + 
                "AccountName=portalvhdsjtq29274knmm2;" + 
                "AccountKey=ywi91c425cNVBnpFuQs0ieA1UzkUIF/nF5KZ0BpUc9fXh0xBs36IaO8w039MRvtRLineI1iMgcKGlXsOq51vKg=="; 
 

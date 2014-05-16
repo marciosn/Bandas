@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
+import com.marciosn.cloud.storage.blobs.model.Usuario;
 @ManagedBean
 @SessionScoped
 public class Repositorio {
@@ -19,6 +21,7 @@ public class Repositorio {
 	List<Blob> listaMUSICAS = new ArrayList<Blob>();
 	List<Blob> listaVIDEOS = new ArrayList<Blob>();
 	List<Blob> listaUris = new ArrayList<Blob>();
+	List<Usuario> listaUsuarios = new ArrayList<Usuario>();
 	public List<Blob> getLista() {
 		return lista;
 	}
@@ -77,4 +80,13 @@ public class Repositorio {
 	public void setListaVIDEOS(List<Blob> listaVIDEOS) {
 		this.listaVIDEOS = listaVIDEOS;
 	}
+
+	public List<Usuario> getListaUsuarios() {
+		return listaUsuarios;
+	}
+
+	public void setListaUsuarios(List<Usuario> listaUsuarios) {
+		this.listaUsuarios = listaUsuarios;
+	}
+	
 }
