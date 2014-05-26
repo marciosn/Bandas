@@ -51,13 +51,6 @@
 			</h:column>
 
 		</h:dataTable>
-		<h:form>
-			<p:growl id="msg" showDetail="true" />
-    		<p:tagCloud model="#{ctlBean.model}">
-        	<p:ajax event="select" update="msg" listener="#{ctlBean.onSelect}" />
-    </p:tagCloud>
- 
-</h:form>
 	</div>
 	
 
