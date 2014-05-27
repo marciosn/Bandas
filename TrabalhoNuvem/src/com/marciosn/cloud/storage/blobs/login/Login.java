@@ -94,7 +94,6 @@ public class Login implements Serializable{
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return "/login";
 	}
 

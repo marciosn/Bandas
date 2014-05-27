@@ -61,6 +61,7 @@ public class StorageControll {
 	private Part file4;
 	private StreamedContent file;  
 	private String nomeArquivo, uri, capa, uriCapa, name;
+	private boolean isNull;
 	
 	private List<String> images;
 	String nomeContainer = pegaSessao();
@@ -69,18 +70,17 @@ public class StorageControll {
             "DefaultEndpointsProtocol=https;" + 
                "AccountName=portalvhdsjtq29274knmm2;" + 
                "AccountKey=ywi91c425cNVBnpFuQs0ieA1UzkUIF/nF5KZ0BpUc9fXh0xBs36IaO8w039MRvtRLineI1iMgcKGlXsOq51vKg=="; 
-
     public String Upload() throws FileNotFoundException {
         try
         {
-        	File f = CriaFile(file2);
-        	if(verificaFileNull(f) == true){
+        	if((file2 == null)){
         		System.out.println("Parametro null");
     			Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
         		flash.setKeepMessages(true);
         		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage	(FacesMessage.SEVERITY_WARN, "Selecione um Arquivo para Upload!!!!", null));
     			return "/pages/upload";
         	}
+        	File f = CriaFile(file2);
         	String path = f.getAbsolutePath();
         	nomeArquivo = file2.getFileName();
         	
@@ -128,33 +128,30 @@ public class StorageControll {
             System.out.print("FileNotFoundException encontrado no metodo Upload(): ");
             System.out.println(fileNotFoundException.getMessage());
             return "/pages/exception";
-            //System.exit(-1);
         }
         catch (StorageException storageException)
         {
             System.out.print("StorageException encontrado no metodo Upload(): ");
             System.out.println(storageException.getMessage());
             return "/pages/exception";
-            //System.exit(-1);
         }
         catch (URISyntaxException uriSyntaxException)
         {
             System.out.print("URISyntaxException encontrado no metodo Upload(): ");
             System.out.println(uriSyntaxException.getMessage());
             return "/pages/exception";
-            //System.exit(-1);
         }
         catch (Exception e)
         {
             System.out.print("Exception encontrado no metodo Upload(): ");
             System.out.println(e.getMessage());
             return "/pages/exception";
-            //System.exit(-1);
         }
      
         return ListarBlobs();
  }
-    public String ListarBlobs() throws FileNotFoundException{
+    public String ListarBlobs(){
+    	System.out.println("Entrou no metodo Listar");
     	while(repositorio.getLista().size() > 0 || repositorio.getListamusics().size() > 0
     			|| repositorio.getListvideos().size() > 0){
     		LimpaLista(repositorio.getLista());
@@ -188,20 +185,17 @@ public class StorageControll {
 			System.out.print("InvalidKeyException encontrado no metodo ListarBlobs(): ");
 			System.out.println(invalidKeyException.getMessage());
 			return "/pages/exception";
-            //System.exit(-1);
 
 		} catch (URISyntaxException uriSyntaxException) {
 			System.out.print("URISyntaxException encontrado no metodo ListarBlobs(): ");
 	        System.out.println(uriSyntaxException.getMessage());
 	        return "/pages/exception";
-	        //System.exit(-1);
 		} catch (StorageException storageException) {
 			System.out.print("StorageException encontrado no metodo ListarBlobs(): ");
 			System.out.println(storageException.getMessage());
 			return "/pages/exception";
-			//System.exit(-1);
 		}
-		return "/pages/paginaBanda";
+		return "/pages/paginaBanda?faces-redirect=true";
 
     }
     
@@ -220,14 +214,9 @@ public class StorageControll {
 			    	//if (blobItem instanceof CloudBlob) {
 			    	System.out.println("Testando if ---->" + uri);
 			        CloudBlob blob = (CloudBlob) blobItem;
-			        
 			        System.out.println("Blob getname  ---->>>" + blob.getName());
-			        
 			        String fileUri2 = String.format("%s/%s", destination.getName(), blobItem.getUri());
-			        
 			        blob.download(new FileOutputStream(blob.getName()));
-			        
-			        //System.out.println("Download realizado --> "+ blob.getName());
 			    }
 			}
 			
@@ -235,25 +224,20 @@ public class StorageControll {
 			System.out.print("InvalidKeyException encontrado no metodo DownloadBlobls(): ");
 			System.out.println(invalidKeyException.getMessage());
 			return "/pages/exception";
-            //System.exit(-1);
 			
 		} catch (URISyntaxException uriSyntaxException) {
 			System.out.print("URISyntaxException encontrado no metodo DownloadBlobls(): ");
 	        System.out.println(uriSyntaxException.getMessage());
 	        return "/pages/exception";
-	        //System.exit(-1);
 			
 		} catch (StorageException storageException) {
 			System.out.print("StorageException encontrado no metodo DownloadBlobls(): ");
 			System.out.println(storageException.getMessage());
 			return "/pages/exception";
-			//System.exit(-1);
 		} catch (FileNotFoundException fileNotFoundException) {
 			System.out.print("FileNotFoundException encontrado no metodo DownloadBlobls(): ");
 			System.out.println(fileNotFoundException.getMessage());
 			return "/pages/exception";
-			//System.exit(-1);
-			
 		} catch (IOException ioException) {
 			System.out.print("IOException encontrado no metodo DownloadBlobls(): ");
 			System.out.println("IOException: " + ioException.getMessage() );
@@ -271,7 +255,6 @@ public class StorageControll {
     		CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
     		CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
     		CloudBlobContainer container = blobClient.getContainerReference(nomeContainer);
-    		//CloudBlockBlob blob = container.getBlockBlobReference("a5.jpg");
     		CloudBlockBlob blob = container.getBlockBlobReference(nomeArquivo);
     		
     		System.out.println("Processo de exclusão concluído -->" + nomeArquivo);
@@ -283,19 +266,16 @@ public class StorageControll {
 			System.out.print("InvalidKeyException encontrado no metodo DeleteBlobs(): ");
 			System.out.println(invalidKeyException.getMessage());
 			return "/pages/exception?faces-redirect=true";
-            //System.exit(-1);
 			
 		} catch (URISyntaxException uriSyntaxException) {
 			System.out.print("URISyntaxException encontrado no metodo DeleteBlobs(): ");
 	        System.out.println(uriSyntaxException.getMessage());
 	        return "/pages/exception?faces-redirect=true";
-	        //System.exit(-1);
 			
 		} catch (StorageException storageException) {
 			System.out.print("StorageException encontrado no metodo DeleteBlobs(): ");
 			System.out.println(storageException.getMessage());
 			return "/pages/exception?faces-redirect=true";
-			//System.exit(-1);
 		}
     	Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
 		flash.setKeepMessages(true);
@@ -318,7 +298,6 @@ public class StorageControll {
 		System.out.println("Entrou no metodo criaFile");
     	String prefix = FilenameUtils.getBaseName(file2.getFileName());
     	String suffix = FilenameUtils.getExtension(file2.getFileName());
-    	//File file = File.createTempFile(prefix + ",", "." + suffix, "/path/to/downloads");
     	File file = File.createTempFile(prefix + ",", "." + suffix);
     	
     	InputStream input = file2.getInputstream();
@@ -330,12 +309,11 @@ public class StorageControll {
     		IOUtils.closeQuietly(output);
     		IOUtils.closeQuietly(input);
     	}
-    
-    
     	System.out.println("Nome do novo file: --->" + file.getName());
     	System.out.println("Path do novo file: --->" + file.getAbsolutePath());
     	System.out.println("Path do novo file: --->" + file.getCanonicalPath());
     	return file;
+    	
     }
     
     public boolean ValidaImage(String string){
@@ -353,49 +331,28 @@ public class StorageControll {
     	name = (String) session.getAttribute("username");
     	return name;
     }
-    public String pegaCapa() throws InvalidKeyException, URISyntaxException, StorageException{
-        CloudStorageAccount account;
-        CloudBlobClient serviceClient;
-        CloudBlobContainer container;
-        CloudBlockBlob blob;
-        
-        System.out.println("A capa recebida é :" + capa);
-        account = CloudStorageAccount.parse(storageConnectionString);
-        serviceClient = account.createCloudBlobClient();
-        container = serviceClient.getContainerReference(nomeContainer);
-    	
-    	for (ListBlobItem blobItem : container.listBlobs()) {
-    	    String uri = blobItem.getUri().toString();
-    	    Blob blob2 = new Blob(uri);
-    	    repositorio.getListaUris().add(blob2);
-    	    URI u = blobItem.getUri();
-    	    if(uri.contains(capa)){
-    	    	System.out.println("ENCONTRADA IMAGEM " + "Nome Buscado " + capa + "Capa Encontrada " + uri);
-    	    	uriCapa = u.toString();
-    	    	return uriCapa;
-    	    }
-    	}
-    	String error = "http://i.imgbox.com/cFnnrfE5.jpg"; 
-    	uriCapa = error;
-    	return uriCapa;
-    }
-    public boolean verificaFileNull(File f){
+
+    public boolean verificaFileNull(UploadedFile f){
     	if(f == null){
-    		return true;
+    		isNull = true;
     	}
     	else
-    	return false;
+    	isNull = false;
+		return isNull;
     }
 /*    @PostConstruct
-    public void SlideImages(){
-    	images = new ArrayList<String>();
-    	for(int i=0; i < repositorio.getLista().size();i++){
-    		int p = i++;
-    		images.add(repositorio.getLista().get(p).getUri());
-    	}
-    	
+    public void listBlobAzure(){
+    	if(pegaSessao() == null){
+    		System.out.println("É Null");
+    		try {
+				ListarBlobs();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}else
+    		System.out.println("Não é Null");
     }*/
-      
     public StreamedContent getFile() {  
         return file;  
     }
