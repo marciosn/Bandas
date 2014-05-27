@@ -1,8 +1,11 @@
 package com.marciosn.cloud.storage.blobs.login;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -10,86 +13,100 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-import org.hibernate.mapping.UnionSubclass;
 
+import org.apache.http.HttpResponse;
+
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+
+import org.apache.http.client.methods.HttpGet;
+
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.impl.client.DefaultHttpClient;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.marciosn.cloud.storage.blobs.dao.UsuarioJPADAO;
 import com.marciosn.cloud.storage.blobs.model.Filme;
 import com.marciosn.cloud.storage.blobs.model.Usuario;
 
 @ManagedBean
 @RequestScoped
+@SessionScoped
 public class Login implements Serializable{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -3984002432649039239L;
-	private String username;
-	private String password;
-	private UsuarioJPADAO usuarioDAO = new UsuarioJPADAO();
-	private List<Usuario> usuarios = new ArrayList<Usuario>();
-	String n = "Márcio Souza";
-
-
+	private static final long serialVersionUID = -3984002432649039239L;	
+	private Usuario usuario = new Usuario();
+	
 	public Login(){
-		HttpSession s = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		if(s != null){
-			s.invalidate();
+		HttpSession httpSession = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		if(httpSession != null){
+			httpSession.invalidate();
 		}
 	}
-	public String loginBean(){
-		System.out.println("Entrou em LoginBean");
-		HttpSession s = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		try{
-		//if(username.equals("blob") && password.equals("2014")){
-		for(Usuario u : getUsuarioBanco()){
-			//System.out.println("Nome: "+ u.getNome());
-		if(u.getNome().contains(username)){
-			if(s == null){
-				s = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-			}
-			//s.setAttribute("username", username);
-			s.setAttribute("username", username);
-			return "/index?faces-redirect=true";
-		}else{
-			if(s != null){
-				s.invalidate();
-			}
-		}
-		}
-} 			catch(Exception e){
+	
+	@SuppressWarnings("deprecation")
+	public String autenticarUsuario(){	
+		String url = "http://138.91.120.126:8080/WSBandasRest/usuario/getAutentica/";
+		url.trim();
+		
+		HttpSession httpSession = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		
+		System.out.println(url + usuario.getNome() + "/" + usuario.getSenha());
+		
+		@SuppressWarnings("resource")
+		HttpClient httpCliente = new DefaultHttpClient();
+		HttpUriRequest httpUriRequest = new HttpGet(url + usuario.getNome() + "/" + usuario.getSenha());
+		
+		String usuarioJson = null;
+		try {
+			HttpResponse httpResponse = httpCliente.execute(httpUriRequest);
+			InputStream inputStream = httpResponse.getEntity().getContent();
+			Reader reader = new InputStreamReader(inputStream);
+
+			Gson gson = new Gson();
+
+			usuarioJson = gson.fromJson(reader, String.class);
+				
+			System.out.println(usuarioJson);
+			
+			if (usuarioJson.equals("true")){
+				System.out.println("Entrei aqui");
+				
+				if(httpSession == null){
+					System.out.println("Pegando a sessão");
+					httpSession = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+				}
+				System.out.println(usuario.getNome());
+				httpSession.setAttribute("username", usuario.getNome());								
+				return "/index?faces-redirect=true";
+				
+			}else{
+				if(httpSession != null){
+					httpSession.invalidate();
+				}
+			}			
+			
+		} catch (ClientProtocolException e) {
+			e.printStackTrace();
+		}catch (IOException e) {
+			e.printStackTrace();
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
+
 		return "/login";
 	}
-	
-	public List<Usuario> getUsuarioBanco(){
-		List<Usuario> usuarios = usuarioDAO.find();
-		return usuarios;
+
+	public Usuario getUsuario() {
+		return usuario;
 	}
-	
-	public String getNome() {
-		return username;
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
-	public void setNome(String nome) {
-		this.username = nome;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public UsuarioJPADAO getUsuarioDAO() {
-		return usuarioDAO;
-	}
-	public void setUsuarioDAO(UsuarioJPADAO usuarioDAO) {
-		this.usuarioDAO = usuarioDAO;
-	}
-	public List<Usuario> getUsuarios() {
-		return usuarios;
-	}
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 }

@@ -13,7 +13,7 @@ public class TesteUsuario {
 			System.out.println("ID: " + u.getId());
 			System.out.println("Nome: " + u.getNome());
 			System.out.println("Senha: " + u.getSenha());
-			System.out.println("Email: " + u.getEmail());
+			System.out.println("Email: " + u.getNome());
 			System.out.println("=========================");
 		}
 		usuarioDAO.close();
