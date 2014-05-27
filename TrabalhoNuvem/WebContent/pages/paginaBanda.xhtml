@@ -88,8 +88,10 @@ margin-top: -230px;
 	<h1>Fotos Da Banda</h1>
 	<p:rating value="#{ratingController.rating2}" stars="10" cancel="false"/>
 	<br/>
+	<p>
+	<h:graphicImage library="img" name="video.png"/>
 	<h:link value="Videos da Banda" outcome="/pages/videosBanda"/>
-	
+	</p>
 	<p:contentFlow value="#{repositorio.lista}" var="image" width="800" height="450">
     <p:graphicImage value="#{image.uri}" styleClass="content" />
     <div class="caption">#{image}</div>
@@ -123,8 +125,12 @@ margin-top: -230px;
     </div>
   	</div>
     </div>
-    </div>		
+    </div>
+    <h5>
+    Se Nenhum Arquivo Estiver Visível, Vá Ate A Página List Para Trazer os Arquivos so Armazenamento.
+    </h5>		
 	</div>
+	
 	<ui:insert name="footer">
 		<ui:include src="/WEB-INF/templates/footer.xhtml" />
 	</ui:insert>

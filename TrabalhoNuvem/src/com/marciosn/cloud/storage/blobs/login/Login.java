@@ -41,14 +41,11 @@ public class Login implements Serializable{
 		System.out.println("Entrou em LoginBean");
 		HttpSession s = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		try{
-		//if(username.equals("blob") && password.equals("2014")){
 		for(Usuario u : getUsuarioBanco()){
-			//System.out.println("Nome: "+ u.getNome());
 		if(u.getNome().contains(username)){
 			if(s == null){
 				s = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 			}
-			//s.setAttribute("username", username);
 			s.setAttribute("username", username);
 			return "/index?faces-redirect=true";
 		}else{

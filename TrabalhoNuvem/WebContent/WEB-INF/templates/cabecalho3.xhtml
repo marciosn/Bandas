@@ -14,7 +14,7 @@
                 <h3>
                   About Us
                 </h3>
-                <p>........................................</p> 
+                <p>The Zuera Never Ends</p> 
               </div>
               <div class="col-sm-4 col-md-4">
                 <!--@todo: replace with company contact details-->
@@ -23,15 +23,15 @@
                 </h3>
                 <address>
                   <p>
-                    <abbr title="Phone"><i class="fa fa-phone"></i></abbr>
+                     <h:graphicImage library="img" name="phone.png"/>
                     999999999999
                   </p>
                   <p>
-                    <abbr title="Email"><i class="fa fa-envelope"></i></abbr>
+                    <h:graphicImage library="img" name="mail.png"/>
                     email@gmail.com
                   </p>
                   <p>
-                    <abbr title="Address"><i class="fa fa-home"></i></abbr>
+                   <h:graphicImage library="img" name="home.png"/>
                     UFC Campus Quixadá
                   </p>
                 </address>
@@ -40,10 +40,12 @@
                 <!--Colour Switch for demo - @todo: remove in production-->
                 <div class="colour-switcher">
                   <h3>
-                    Divirta-se
+                    Aproveite!!!
                   </h3>
-                  <p>............................</p>
-                  <p>Usuário Conectado: <h:outputLabel value="#{storageControll.name}" /></p>
+                  <p>Usuário Conectado: 
+                  <h:outputLabel value="#{storageControll.name}" />
+                  <h:graphicImage library="img" name="user.png"/>
+                  </p>
                 </div>
               </div>
             </div>
@@ -61,23 +63,12 @@
                     <span>Bandas</span>+<span></span>
                   </h1>
                   </h:link>
-                <div class="slogan">Divulgue sua banda</div>
+                <div class="slogan">Divulgue Sua Banda E Fique Por Dentro Das Bandas Que Estão Surgindo.</div>
               </div>
-              
-              <!--header rightside-->
-              <!-- <div class="col-md-4">
-                social media icons
-                <div class="social-media">
-                  @todo: replace with company social media details
-                  <a href="#"><img src="http://g.etfv.co/http://www.twitter.com/" alt="Twitter" width="25" height="25" class="fa fa-twitter"/></a>
-                  <a href="#"><img src="http://g.etfv.co/http://www.facebook.com" alt="Facebook" width="25" height="25" class="fa fa-facebook"/></a>
-                  <a href="#"><img src="http://g.etfv.co/http://www.logmein.com/" alt="Facebook" width="25" height="25" class="fa fa-linkedin"/></a>
-                  <a href="#"><img src="http://g.etfv.co/http://plus.google.com" alt="Facebook" width="25" height="25" class="fa fa-google-plus"/></a>
-                </div>
-              </div> -->
+
             </div>
             <div id="header-hidden-link">
-              <a href="#" title="Click me you'll get a surprise" class="show-hide" data-toggle="show-hide" data-target=".header-hidden"><i></i>Open</a>
+              <a href="#" title="Click" class="show-hide" data-toggle="show-hide" data-target=".header-hidden"><h:graphicImage library="img" name="down.png"/>Open</a>
             </div>
           </div>
         </div>
@@ -108,11 +99,10 @@
                     <a href="#" class="dropdown-toggle" id="pages-drop" data-toggle="dropdown" data-hover="dropdown">Pages +</a> 
                     <!-- Mega Menu -->
                     <ul class="dropdown-menu" role="menu" aria-labelledby="pages-drop">
-                    <li><h:link value="Upload" outcome="/pages/upload" /></li>
-              		<li><h:link value="Delete" outcome="/pages/delete" /></li>
-              		<li><h:link value="Download" outcome="/pages/download" /></li>
-              		<li><h:link value="List" outcome="/pages/list" /></li>
-              		<li><h:link value="Images" outcome="/pages/images" /></li>                           
+                    <li><h:link value="Upload De Arquivos" outcome="/pages/upload" /></li>
+              		<li><h:link value="Deletar Arquivos" outcome="/pages/delete" /></li>
+              		<li><h:link value="Listar" outcome="/pages/list" /></li>
+              		<li><h:link value="Exibir My Images" outcome="/pages/images" /></li>                        
                     </ul>
                   </li>
 
