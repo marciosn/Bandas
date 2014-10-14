@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="ATrabalhoNuvem">
+    <wb-module deploy-name="BandasCloud">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <property name="java-output-path" value="/ATrabalhoNuvem/build/classes"/>
-        <property name="context-root" value="ATrabalhoNuvem"/>
+        <property name="java-output-path" value="/BandasCloud/build/classes"/>
+        <property name="context-root" value="BandasCloud"/>
     </wb-module>
 </project-modules>

@@ -7,7 +7,7 @@ import javax.persistence.Persistence;
 
 public class JPAUtil {
 	private static final EntityManagerFactory emf = Persistence
-			.createEntityManagerFactory("dev");
+			.createEntityManagerFactory("dev2");
 
 	private static ThreadLocal<EntityManager> ems = new ThreadLocal<EntityManager>();
 

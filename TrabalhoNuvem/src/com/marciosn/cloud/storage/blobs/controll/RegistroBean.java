@@ -15,7 +15,6 @@ import com.marciosn.cloud.storage.blobs.model.Usuario;
 
 @ManagedBean
 @RequestScoped
-@SessionScoped
 public class RegistroBean {
 	private Usuario usuario = new Usuario();
 	private UsuarioJPADAO usuarioDAO = new UsuarioJPADAO();
@@ -38,7 +37,7 @@ public class RegistroBean {
 			usuarioDAO.rollback();
 			e.printStackTrace();
 		} finally{
-			usuarioDAO.close();
+			//usuarioDAO.close();
 		}
 		ListaUsuario();
 		return "login";
