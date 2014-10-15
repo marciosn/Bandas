@@ -5,10 +5,6 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   
-  <properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-
 	<profiles>
 		<profile>
 			<id>tomcat-localhost</id>
@@ -43,11 +39,7 @@
       <artifactId>commons-collections</artifactId>
       <version>3.1</version>
     </dependency>
-    <dependency>
-      <groupId>commons-collections</groupId>
-      <artifactId>commons-collections</artifactId>
-      <version>3.1</version>
-    </dependency>
+
     <dependency>
       <groupId>commons-digester</groupId>
       <artifactId>commons-digester</artifactId>
@@ -58,6 +50,7 @@
       <artifactId>commons-fileupload</artifactId>
       <version>1.3.1</version>
     </dependency>
+      <!--
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
@@ -76,16 +69,13 @@
       <version>2.4</version>
       <classifier>test-sources</classifier>
     </dependency>
+      -->
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
       <version>2.4</version>
     </dependency>
-    <dependency>
-      <groupId>commons-io</groupId>
-      <artifactId>commons-io</artifactId>
-      <version>2.4</version>
-    </dependency>
+    
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
@@ -96,11 +86,13 @@
       <artifactId>commons-logging</artifactId>
       <version>1.1.1</version>
     </dependency>
+      <!--
     <dependency>
       <groupId>commons-logging</groupId>
       <artifactId>commons-logging</artifactId>
       <version>1.0.4</version>
     </dependency>
+      -->
     <dependency>
       <groupId>dom4j</groupId>
       <artifactId>dom4j</artifactId>
@@ -161,45 +153,53 @@
       <artifactId>javax.servlet</artifactId>
       <version>3.0.0.v201112011016</version>
     </dependency>
+      <!--
     <dependency>
       <groupId>com.sun.xml.bind</groupId>
       <artifactId>jaxb-impl</artifactId>
       <version>2.2.3U1</version>
       <classifier>sources</classifier>
     </dependency>
+      -->
     <dependency>
       <groupId>com.sun.xml.bind</groupId>
       <artifactId>jaxb-impl</artifactId>
       <version>2.2.3U1</version>
     </dependency>
+      <!--
     <dependency>
       <groupId>com.sun.jersey</groupId>
       <artifactId>jersey-client</artifactId>
       <version>1.13</version>
       <classifier>sources</classifier>
     </dependency>
+      -->
     <dependency>
       <groupId>com.sun.jersey</groupId>
       <artifactId>jersey-client</artifactId>
       <version>1.13</version>
     </dependency>
+      <!--
     <dependency>
       <groupId>com.sun.jersey</groupId>
       <artifactId>jersey-core</artifactId>
       <version>1.13</version>
       <classifier>sources</classifier>
     </dependency>
+      -->
     <dependency>
       <groupId>com.sun.jersey</groupId>
       <artifactId>jersey-core</artifactId>
       <version>1.13</version>
     </dependency>
+      <!--
     <dependency>
       <groupId>com.sun.jersey</groupId>
       <artifactId>jersey-json</artifactId>
       <version>1.13</version>
       <classifier>sources</classifier>
     </dependency>
+      -->
     <dependency>
       <groupId>com.sun.jersey</groupId>
       <artifactId>jersey-json</artifactId>
@@ -230,12 +230,12 @@
       <artifactId>log4j</artifactId>
       <version>1.2.16</version>
     </dependency>
-    <dependency>
+      <!-- <dependency>
       <groupId>javax.mail</groupId>
       <artifactId>mail</artifactId>
       <version>1.4.5</version>
       <classifier>sources</classifier>
-    </dependency>
+    </dependency> -->
     <dependency>
       <groupId>javax.mail</groupId>
       <artifactId>mail</artifactId>
@@ -271,7 +271,7 @@
       <artifactId>standard</artifactId>
       <version>1.1.2</version>
     </dependency>
-    <dependency>
+    <!--<dependency>
       <groupId>antlr</groupId>
       <artifactId>antlr</artifactId>
       <version>2.7.6</version>
@@ -292,11 +292,6 @@
       <version>3.1</version>
     </dependency>
     <dependency>
-      <groupId>commons-collections</groupId>
-      <artifactId>commons-collections</artifactId>
-      <version>3.1</version>
-    </dependency>
-    <dependency>
       <groupId>commons-digester</groupId>
       <artifactId>commons-digester</artifactId>
       <version>1.7</version>
@@ -310,36 +305,40 @@
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
       <version>2.4</version>
-    </dependency>
+    </dependency>-->
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
       <version>2.4</version>
       <classifier>javadoc</classifier>
     </dependency>
+      <!--
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
       <version>2.4</version>
       <classifier>sources</classifier>
     </dependency>
+     
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
       <version>2.4</version>
-    </dependency>
+    </dependency>-->
+      <!--
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
       <version>2.4</version>
       <classifier>test-sources</classifier>
     </dependency>
+      -->
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
       <version>3.1</version>
     </dependency>
-    <dependency>
+    <!--<dependency>
       <groupId>commons-logging</groupId>
       <artifactId>commons-logging</artifactId>
       <version>1.0.4</version>
@@ -348,7 +347,7 @@
       <groupId>commons-logging</groupId>
       <artifactId>commons-logging</artifactId>
       <version>1.1.1</version>
-    </dependency>
+    </dependency>-->
     <dependency>
       <groupId>dom4j</groupId>
       <artifactId>dom4j</artifactId>
@@ -409,45 +408,53 @@
       <artifactId>jaxb-impl</artifactId>
       <version>2.2.3U1</version>
     </dependency>
+      <!--
     <dependency>
       <groupId>com.sun.xml.bind</groupId>
       <artifactId>jaxb-impl</artifactId>
       <version>2.2.3U1</version>
       <classifier>sources</classifier>
     </dependency>
+      -->
     <dependency>
       <groupId>com.sun.jersey</groupId>
       <artifactId>jersey-client</artifactId>
       <version>1.13</version>
     </dependency>
+      <!--
     <dependency>
       <groupId>com.sun.jersey</groupId>
       <artifactId>jersey-client</artifactId>
       <version>1.13</version>
       <classifier>sources</classifier>
     </dependency>
+      -->
     <dependency>
       <groupId>com.sun.jersey</groupId>
       <artifactId>jersey-core</artifactId>
       <version>1.13</version>
     </dependency>
+      <!--
     <dependency>
       <groupId>com.sun.jersey</groupId>
       <artifactId>jersey-core</artifactId>
       <version>1.13</version>
       <classifier>sources</classifier>
     </dependency>
+      -->
     <dependency>
       <groupId>com.sun.jersey</groupId>
       <artifactId>jersey-json</artifactId>
       <version>1.13</version>
     </dependency>
+      <!--
     <dependency>
       <groupId>com.sun.jersey</groupId>
       <artifactId>jersey-json</artifactId>
       <version>1.13</version>
       <classifier>sources</classifier>
     </dependency>
+    -->
     <dependency>
       <groupId>org.codehaus.jettison</groupId>
       <artifactId>jettison</artifactId>
@@ -478,12 +485,14 @@
       <artifactId>mail</artifactId>
       <version>1.4.5</version>
     </dependency>
+      <!-- 
     <dependency>
       <groupId>javax.mail</groupId>
       <artifactId>mail</artifactId>
       <version>1.4.5</version>
       <classifier>sources</classifier>
     </dependency>
+    -->
     <dependency>
       <groupId>com.microsoft.windowsazure</groupId>
       <artifactId>microsoft-windowsazure-api</artifactId>
@@ -542,6 +551,11 @@
 			<artifactId>tomcat6-maven-plugin</artifactId>
 			<version>2.0</version>
 		</dependency>
+		<dependency>
+  			<groupId>com.google.code.gson</groupId>
+  			<artifactId>gson</artifactId>
+  			<version>2.2.4</version>
+		</dependency>
   </dependencies>
   <build>
     <sourceDirectory>src</sourceDirectory>
@@ -555,38 +569,36 @@
     </resources>
     <plugins>
     <plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>tomcat-maven-plugin</artifactId>
-				<version>1.1</version>
-				<configuration>
-					<server>${tomcat-server}</server>
-					<url>${tomcat-url}</url>
-					<update>true</update>
-				</configuration>
-			</plugin>
+        <groupId>org.codehaus.mojo</groupId>
+		<artifactId>tomcat-maven-plugin</artifactId>
+		<version>1.1</version>
+		<configuration>
+			<server>${tomcat-server}</server>
+			<url>${tomcat-url}</url>
+			<update>true</update>
+        </configuration>
+	</plugin>
     <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-checkstyle-plugin</artifactId>
-            <version>2.13</version>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>2.13</version>
         <configuration>
           <configLocation>/target/checkstyle.xml</configLocation>
         </configuration>
-        </plugin>
-            
+    </plugin>
 		<plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-pmd-plugin</artifactId>
             <version>2.7.1</version>
-            <configuration>
+            <!--<configuration>
                 <linkXRef>false</linkXRef>
                 <targetJdk>1.7</targetJdk>
                 <rulesets>
                     <ruleset>/rulesets/basic.xml</ruleset>
                 </rulesets>
-            </configuration>
+            </configuration>-->
         </plugin>
-		
-		<plugin>
+	<plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-project-info-reports-plugin</artifactId>
           <version>2.7</version>
