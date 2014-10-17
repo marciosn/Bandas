@@ -23,7 +23,6 @@ public class RegistroBean {
 	public String CadastraUsuario(){
 		if(usuario.getNome() == null || usuario.getNome().contains(" ") 
 				|| usuario.getNome().contains(usuario.getNome().toUpperCase())){
-			System.out.println("Parametro null");
 			Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
     		flash.setKeepMessages(true);
     		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage	(FacesMessage.SEVERITY_ERROR, "Username Inválido!!!!", null));
@@ -37,19 +36,13 @@ public class RegistroBean {
 			usuarioDAO.rollback();
 			e.printStackTrace();
 		} finally{
-			//usuarioDAO.close();
+			usuarioDAO.close();
 		}
 		ListaUsuario();
 		return "login";
 	}
 	public List<Usuario> ListaUsuario(){
 		List<Usuario> usuarios = usuarioDAO.find();
-		for(Usuario u: usuarios){
-			System.out.println("Nome "+ u.getNome());
-			System.out.println("Senha "+ u.getSenha());
-			System.out.println("Email "+ u.getEmail());
-			System.out.println("=====================");
-		}
 		return usuarios;
 	}
 	
