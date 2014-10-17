@@ -6,28 +6,20 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.Serializable;
 
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-
 import org.apache.http.HttpResponse;
-
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
-
 import org.apache.http.client.methods.HttpGet;
-
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.marciosn.cloud.storage.blobs.dao.UsuarioJPADAO;
-import com.marciosn.cloud.storage.blobs.model.Filme;
 import com.marciosn.cloud.storage.blobs.model.Usuario;
 
 @ManagedBean

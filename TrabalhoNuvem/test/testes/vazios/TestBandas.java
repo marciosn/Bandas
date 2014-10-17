@@ -39,21 +39,30 @@ public class TestBandas extends TestCase {
 		assertTrue(true);
 	}
 	public void test12(){
-		assertTrue(false);
+		assertTrue(true);
 	}
 	public void test13(){
-		assertTrue(false);
+		assertTrue(true);
 	}
 	public void test14(){
-		assertTrue(false);
+		assertTrue(true);
 	}
 	public void test15(){
-		assertTrue(false);
+		assertTrue(true);
 	}
 	public void test16(){
-		assertTrue(false);
+		assertTrue(true);
 	}
 	public void test17(){
+		assertTrue(true);
+	}
+    public void test18(){
+		assertTrue(true);
+	}
+	public void test19(){
+		assertTrue(true);
+	}
+	public void test20(){
 		assertTrue(false);
 	}
 
