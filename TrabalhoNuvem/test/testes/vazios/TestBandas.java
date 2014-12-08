@@ -2,6 +2,7 @@ package testes.vazios;
 
 import junit.framework.TestCase;
 
+
 public class TestBandas extends TestCase {
 	
 	public void test1(){
