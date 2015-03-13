@@ -8,7 +8,7 @@
 			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://100.66.36.74:5432/Bandas" />
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 			<property name="javax.persistence.jdbc.user" value="postgres" />
-			<property name="javax.persistence.jdbc.password" value="marciosn" />
+			<property name="javax.persistence.jdbc.password" value="*******" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
@@ -21,7 +21,7 @@
     <properties>
         <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/Nuvem"/>
         <property name="javax.persistence.jdbc.user" value="postgres"/>
-        <property name="javax.persistence.jdbc.password" value="marciosn"/>
+        <property name="javax.persistence.jdbc.password" value="*******"/>
         <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
         <property name="eclipselink.cache.shared.default" value="false"/>
         <property name="hibernate.hbm2ddl.auto" value="update" />
